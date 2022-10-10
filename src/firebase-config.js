@@ -9,7 +9,7 @@ console.log(process.env);
 
 
 const firebaseConfig = {
-  apiKey: process.env.React_App_Kambera_Api,
+  apiKey: process.env.API_KEY,
   authDomain: "kambera-28897.firebaseapp.com",
   databaseURL: "https://kambera-28897-default-rtdb.firebaseio.com",
   projectId: "kambera-28897",
