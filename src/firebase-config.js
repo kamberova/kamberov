@@ -1,10 +1,15 @@
+
 import { initializeApp } from "firebase/app";
+
+require('dotenv').config();
+
+console.log(process.env);
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
 const firebaseConfig = {
-  apiKey: process.env.Kambera_api,
+  apiKey: process.env.React_App_Kambera_Api,
   authDomain: "kambera-28897.firebaseapp.com",
   databaseURL: "https://kambera-28897-default-rtdb.firebaseio.com",
   projectId: "kambera-28897",
