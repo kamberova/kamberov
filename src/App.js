@@ -25,7 +25,7 @@ import Notification from './Components/Common/Notification';
 import ErrorBoundary from './Components/Common/ErrorBoundary';
 import PrivateRoute from './Components/Common/PrivateRoute';
 import GuardedRoute from './Components/Common/GuardedRoute';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

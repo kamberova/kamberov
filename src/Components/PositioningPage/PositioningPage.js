@@ -1,5 +1,5 @@
 // import './PositioningPage.css';
-
+import React from "react";
 function PositioningPage() {
 
     return (
