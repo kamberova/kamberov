@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { React, useEffect, useState } from 'react';
-import db from './firebase-config.js';
-import { collection, getDocs } from 'firebase/firestore/lite';
+
+// import { React, useEffect, useState } from 'react';
+// import db from './firebase-config.js';
+// import { collection, getDocs } from 'firebase/firestore/lite';
 
 
 import { AuthProvider } from './contexts/AuthContext';
@@ -29,21 +30,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, 'users');
-
-  useEffect(() => {
-
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((user) => ({ ...user.data(), id: user.id })))
-
-    };
-
-
-    getUsers();
-
-  }, []);
+ 
 
   return (
     <ErrorBoundary>
