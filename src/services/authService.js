@@ -1,4 +1,4 @@
-const baseUrl = 'https://kambera-28897-default-rtdb.firebaseio.com/';
+const baseUrl = 'https://kambera-28897-default-rtdb.firebaseio.com';
 
 export const login = async (email, password) => {
     let res = await fetch(`${baseUrl}/users/login`, {

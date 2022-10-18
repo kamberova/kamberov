@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const baseUrl = 'https://kambera-28897-default-rtdb.firebaseio.com/';
+const baseUrl = 'https://kambera-28897-default-rtdb.firebaseio.com';
 
 export const like = (userId, bookingId) => request.post(`${baseUrl}/likes`, {userId, bookingId});
 export const getBookingLikes = (bookingId) => {

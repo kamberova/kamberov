@@ -1,4 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
+    // eslint-disable-next-line
+
 import React, { useEffect, useState } from 'react';
 import db from '../../firebase-config';
 import { collection, getDocs } from 'firebase/firestore/lite';
@@ -54,7 +56,7 @@ function Home() {
                                 <h1 className="text-white" data-aos="fade-up" data-aos-delay="500">Upgrade your table tennis skills with me!</h1>
 
                                 <a href="/positioning-page" className="text-primary-color" data-aos="fade-up" data-aos-delay="600">Learn how to improve your body position!</a>
-                               
+                               <p>{users.email}</p>
                             </div>
                         </div>
 
