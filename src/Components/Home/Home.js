@@ -1,9 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
     // eslint-disable-next-line
 
-import React, { useEffect, useState } from 'react';
-import db from '../../firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
+// import React, { useEffect, useState } from 'react';
+// import db from '../../firebase-config';
+// import { collection, getDocs } from 'firebase/firestore';
 
 // import * as bookService from '../../services/bookService';
 

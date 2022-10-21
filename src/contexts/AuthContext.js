@@ -1,3 +1,28 @@
+
+// import React, { useEffect, useState } from "react";
+// import db from "../firebase-config";
+
+
+// export const AuthContext = React.createContext();
+
+// export const AuthProvider = ({ children }) => {
+//     const [user, setUser] = useState(null);
+
+//     useEffect(() => {
+//         db.auth().onAuthSTateChanged(setUser);
+//     }, []);
+
+
+//     return (
+//         <AuthContext.Provider value={{ user }}>
+//             {children}
+//         </AuthContext.Provider>
+//     );
+
+// };
+
+
+
 import { createContext, useContext } from 'react';
 
 import useLocalStorage from '../hooks/useLocalStorage';
