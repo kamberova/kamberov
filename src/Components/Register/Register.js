@@ -1,14 +1,30 @@
 import { useNavigate } from 'react-router';
 import React from "react";
-import * as authService from '../../services/authService';
-import { useAuthContext } from '../../contexts/AuthContext';
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from 'firebase/auth';
+
 
 function Register() {
     const navigate = useNavigate();
-    const { login } = useAuthContext();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const registerSubmitHandler = (e) => {
         e.preventDefault();
+
+        const register = async () => {
+            try {
+                const user = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+                console.log(user);
+            } catch (error) {
+                console.log(error.message);
+            }
+        };
 
         let { email, password, repeatPassword } = Object.fromEntries(new FormData(e.currentTarget));
         console.log(email, password)

@@ -1,48 +1,82 @@
-const baseUrl = 'https://kambera-28897-default-rtdb.firebaseio.com';
+/* eslint-disable react-hooks/rules-of-hooks */
+// const baseUrl = 'https://kambera-28897-default-rtdb.firebaseio.com';
 
-export const login = async (email, password) => {
-    let res = await fetch(`${baseUrl}/users/login`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-    });
+// export const login = async (email, password) => {
+//     let res = await fetch(`${baseUrl}/users/login`, {
+//         method: 'POST',
+//         headers: {
+//             'content-type': 'application/json'
+//         },
+//         body: JSON.stringify({ email, password })
+//     });
 
-    let jsonResult = await res.json();
+//     let jsonResult = await res.json();
 
-    if (res.ok) {
-        return jsonResult;
-    } else {
-        throw jsonResult.message;
+//     if (res.ok) {
+//         return jsonResult;
+//     } else {
+//         throw jsonResult.message;
+//     }
+// };
+
+// export const register = (email, password) => {
+//     return fetch(`${baseUrl}/users/register`, {
+//         method: 'POST',
+//         headers: {
+//             'content-type': 'application/json'
+//         },
+//         body: JSON.stringify({ email, password })
+//     })
+//         .then(res => res.json());
+// };
+
+// export const logout = (token) => {
+//     return fetch(`${baseUrl}/users/logout`, {
+//         headers: {
+//             'X-Authorization': token,
+//         }
+//     })
+// };
+
+// export const getUser = () => {
+//     let username = localStorage.getItem('user');
+
+//     return username;
+// };
+
+// export const isAuthenticated = () => {
+//     return Boolean(getUser())
+// };
+
+
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from 'firebase/auth';
+
+const [registerEmail, setRegisterEmail] = useState("");
+const [registerPassword, setRegisterPassword] = useState("");
+const [loginEmail, setLoginEmail] = useState("");
+const [loginPassword, setLoginPassword] = useState("");
+
+
+export const register = async () => {
+    try {
+        const user = await createUserWithEmailAndPassword(
+            auth,
+            registerEmail,
+            registerPassword
+        );
+        console.log(user);
+    } catch (error) {
+        console.log(error.message);
     }
 };
 
-export const register = (email, password) => {
-    return fetch(`${baseUrl}/users/register`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-    })
-        .then(res => res.json());
+
+const login = async () => {
+
 };
 
-export const logout = (token) => {
-    return fetch(`${baseUrl}/users/logout`, {
-        headers: {
-            'X-Authorization': token,
-        }
-    })
-};
+const logout = async () => {
 
-export const getUser = () => {
-    let username = localStorage.getItem('user');
-
-    return username;
-};
-
-export const isAuthenticated = () => {
-    return Boolean(getUser())
 };

@@ -1,65 +1,68 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
-import * as authService from '../../services/authService';
+// import { useAuthContext } from '../../contexts/AuthContext';
+// import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
-function Login() {
-    const { login } = useAuthContext();
-    const { addNotification } = useNotificationContext();
-    const navigate = useNavigate();
+// import * as authService from '../../services/authService';
 
-    const onLoginHandler = (e) => {
-        e.preventDefault();
+// function Login() {
+//     const { login } = useAuthContext();
+//     const { addNotification } = useNotificationContext();
+//     const navigate = useNavigate();
 
-        let formData = new FormData(e.currentTarget);
+//     const onLoginHandler = (e) => {
+//         e.preventDefault();
 
-        let email = formData.get('email');
-        let password = formData.get('password');
+//         let formData = new FormData(e.currentTarget);
 
-        if (password == '' || email == '') {
-            alert('All fields must be filled!');
-        };
+//         let email = formData.get('email');
+//         let password = formData.get('password');
 
-        console.log(email, password);
+//         if (password == '' || email == '') {
+//             alert('All fields must be filled!');
+//         };
 
-        authService.login(email, password)
-            .then((authData) => {
-                login(authData);
-                navigate('/');
-                addNotification('You are logged in successfully', types.success);
-            })
-            .catch(err => {
-                alert(err);
-                console.log(err);
-            });
+//         console.log(email, password);
 
-    }
+//         authService.login(email, password)
+//             .then((authData) => {
+//                 login(authData);
+//                 navigate('/');
+//                 addNotification('You are logged in successfully', types.success);
+//             })
+//             .catch(err => {
+//                 alert(err);
+//                 console.log(err);
+//             });
 
-    return (
+//     }
 
-        <>
+//     return (
 
-            <div className="membership-form">
-                <p>Already have an acoount?</p>
-                {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
-                <form onSubmit={onLoginHandler} method="POST" className="login-form webform" role="form">
-                    <label htmlFor="email">E-mail</label>
-                    <input type="email" className="form-control" name="email" placeholder="yourEmail" id="email" />
+//         <>
 
-                    <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" name="password" placeholder="yourPassword" id="password" />
+//             <div className="membership-form">
+//                 <p>Already have an acoount?</p>
+//                 {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
+//                 <form onSubmit={onLoginHandler} method="POST" className="login-form webform" role="form">
+//                     <label htmlFor="email">E-mail</label>
+//                     <input type="email" className="form-control" name="email" placeholder="yourEmail" id="email" />
 
-                    <button type="submit" className="form-control" id="submit-button" name="submit">Login</button>
+//                     <label htmlFor="password">Password</label>
+//                     <input type="password" className="form-control" name="password" placeholder="yourPassword" id="password" />
 
-                </form>
+//                     <button type="submit" className="form-control" id="submit-button" name="submit">Login</button>
 
-            </div>
-        </>
+//                 </form>
 
-    )
+//             </div>
+//         </>
 
-}
+//     )
 
-export default Login;
+// }
+
+// export default Login;
+
+

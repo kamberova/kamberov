@@ -20,8 +20,7 @@
 
 // import * as firebase from "firebase/app";
 import { initializeApp } from "firebase/app";
-import "firebase/database";
-import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 
 const firebaseConfig = {
@@ -34,8 +33,6 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_API_ID
 };
 
-const app= initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
-
-export default db;
+export const auth = getAuth(app);
