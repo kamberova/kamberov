@@ -90,8 +90,8 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
 
-    const signUp = (email, password, repeatPassword) => {
-        return createUserWithEmailAndPassword(auth, email, password, repeatPassword);
+    const signUp = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const login = (email, password) => {

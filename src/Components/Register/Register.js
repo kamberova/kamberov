@@ -14,17 +14,22 @@ function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     // const [repeatPassword, setRepeatPassword] = useState("");
-    const { signUp } = useAuthContext();
+    const { signUp, auth } = useAuthContext();
 
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
-            await signUp(email, password);
-            navigate('/');
+            const user = await signUp(
+                auth,
+                email,
+                password
+            );
+            console.log(user);
+            navigate('/')
         } catch (error) {
             alert(error.message);
-         
+
         }
 
     };
@@ -36,9 +41,9 @@ function Register() {
     return (
         <>
             <div className="membership-form">
-    
+
                 <p>Are you a new member to my page?</p>
-    
+
                 {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
                 <form onSubmit={registerSubmitHandler} method="POST" className="membership-form webform" role="form">
                     <label htmlFor="email">E-mail</label>
@@ -50,34 +55,34 @@ function Register() {
                         id="email"
                         onChange={(e) => setEmail(e.target.value)}
                     />
-    
+
                     <label htmlFor="password">Password</label>
-    
-                    <input 
-                    type="password" 
-                    className="form-control" 
-                    name="password" 
-                    placeholder="yourPassword" 
-                    required id="password" 
-                    onChange={(e) => setPassword(e.target.value)}
+
+                    <input
+                        type="password"
+                        className="form-control"
+                        name="password"
+                        placeholder="yourPassword"
+                        required id="password"
+                        onChange={(e) => setPassword(e.target.value)}
                     />
-    
+
                     <label htmlFor="repeatPassword">Repeat Password</label>
-    
-                    <input 
-                    type="password" 
-                    className="form-control" 
-                    name="repeatPassword" 
-                    placeholder="repeatPassword" 
-                    required id="repeatPassword" 
-                    // onChange={(e) => setRepeatPassword(e.target.value)}
+
+                    <input
+                        type="password"
+                        className="form-control"
+                        name="repeatPassword"
+                        placeholder="repeatPassword"
+                        required id="repeatPassword"
+                        // onChange={(e) => setRepeatPassword(e.target.value)}
                     />
                     <button type="submit" className="form-control" id="submit-button" name="submit">Create an Account</button>
                 </form>
-    
+
             </div>
         </>
-    
+
     )
 
 }
