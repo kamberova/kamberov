@@ -13,14 +13,14 @@ function Register() {
     // const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [repeatPassword, setRepeatPassword] = useState("");
+    // const [repeatPassword, setRepeatPassword] = useState("");
     const { signUp } = useAuthContext();
 
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
-            await signUp(email, password, repeatPassword);
+            await signUp(email, password);
             navigate('/');
         } catch (error) {
             alert(error.message);
@@ -70,7 +70,7 @@ function Register() {
                     name="repeatPassword" 
                     placeholder="repeatPassword" 
                     required id="repeatPassword" 
-                    onChange={(e) => setRepeatPassword(e.target.value)}
+                    // onChange={(e) => setRepeatPassword(e.target.value)}
                     />
                     <button type="submit" className="form-control" id="submit-button" name="submit">Create an Account</button>
                 </form>

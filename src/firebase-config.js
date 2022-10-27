@@ -18,9 +18,11 @@
 
 
 
-// import * as firebase from "firebase/app";
+// import env from "../";
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
+import 'firebase/storage';
+
 
 
 const firebaseConfig = {
@@ -34,5 +36,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 export const auth = getAuth(app);
+
+export default app;
