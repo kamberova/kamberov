@@ -41,7 +41,7 @@ function Header() {
 
   let userNavigation = (
     <div id="user">
-      <span className="text-white">Welcome, {user.email}</span>
+      <span className="text-white">Welcome, {user}</span>
       <ul className="navbar-nav ml-lg-auto">
 
         <li className="nav-item">
@@ -96,7 +96,7 @@ function Header() {
 
             <ul className="navbar-nav ml-lg-auto">
 
-              {user.email
+              {user
                 ? userNavigation
                 : guestNavigation
               }

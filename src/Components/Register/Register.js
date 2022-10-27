@@ -5,35 +5,33 @@ import { useState } from "react";
 // import { auth } from '../../firebase-config';
 
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+// import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
 
 function Register() {
     const navigate = useNavigate();
-    const { addNotification } = useNotificationContext();
+    // const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
-    const { register } = useAuthContext();
+    const { signUp } = useAuthContext();
 
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
-            await register(email, password, repeatPassword);
-            addNotification('You successfully registered', types.success);
+            await signUp(email, password, repeatPassword);
             navigate('/');
-
         } catch (error) {
-            alert(types.error);
-            console.log(types.error)
+            alert(error.message);
+         
         }
 
-    }
+    };
 
-    if (password === '' || email === '' || repeatPassword === '') {
-        alert('All fields must be filled!');
-    }
+    // if (password === '' || email === '' || repeatPassword === '') {
+    //     alert('All fields must be filled!');
+    // }
 
     return (
         <>

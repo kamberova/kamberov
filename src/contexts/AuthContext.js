@@ -90,8 +90,8 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
 
-    const register = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
+    const signUp = (email, password, repeatPassword) => {
+        return createUserWithEmailAndPassword(auth, email, password, repeatPassword);
     }
 
     const login = (email, password) => {
@@ -112,7 +112,7 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     return (
-        <AuthContext.Provider value={ { user, login, register, isAuthenticated: user.email } }>
+        <AuthContext.Provider value={ { user, login, signUp } }>
             {children}
         </AuthContext.Provider>
     );
