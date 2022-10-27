@@ -66,3 +66,81 @@
 // export default Login;
 
 
+// eslint-disable-next-line
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
+
+// import * as authService from '../../services/authService';
+
+function Login() {
+        const { login } = useAuthContext();
+        const { addNotification } = useNotificationContext();
+        const navigate = useNavigate();
+        const [email, setEmail] = useState("");
+        const [password, setPassword] = useState("");
+
+        const onLoginHandler = async (e) => {
+            e.preventDefault();
+
+            try {
+                await login(email, password);
+                addNotification('You are logged in successfully', types.success);
+                navigate('/');
+            } catch (error) {
+                alert(types.error);
+                console.log(types.error)
+            }
+
+            // if (password == '' || email == '') {
+            //     alert('All fields must be filled!');
+            // };
+
+            console.log(email, password);
+
+
+        }
+
+        return (
+
+            <>
+
+                <div className="membership-form">
+                    <p>Already have an acoount?</p>
+                    {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
+                    <form onSubmit={onLoginHandler} method="POST" className="login-form webform" role="form">
+                        <label htmlFor="email">E-mail</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            name="email" placeholder="yourEmail"
+                            id="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            name="password"
+                            placeholder="yourPassword"
+                            id="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+
+                        <button type="submit" className="form-control" id="submit-button" name="submit">Login</button>
+
+                    </form>
+
+                </div>
+            </>
+
+        )
+
+
+    }
+
+export default Login;
+
+

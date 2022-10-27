@@ -49,34 +49,95 @@
 // };
 
 
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from 'firebase/auth';
+// import { useState } from "react";
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { auth } from 'firebase/auth';
 
-const [registerEmail, setRegisterEmail] = useState("");
-const [registerPassword, setRegisterPassword] = useState("");
-const [loginEmail, setLoginEmail] = useState("");
-const [loginPassword, setLoginPassword] = useState("");
-
-
-export const register = async () => {
-    try {
-        const user = await createUserWithEmailAndPassword(
-            auth,
-            registerEmail,
-            registerPassword
-        );
-        console.log(user);
-    } catch (error) {
-        console.log(error.message);
-    }
-};
+// const [registerEmail, setRegisterEmail] = useState("");
+// const [registerPassword, setRegisterPassword] = useState("");
+// const [loginEmail, setLoginEmail] = useState("");
+// const [loginPassword, setLoginPassword] = useState("");
 
 
-const login = async () => {
+// export const register = async () => {
+//     try {
+//         const user = await createUserWithEmailAndPassword(
+//             auth,
+//             registerEmail,
+//             registerPassword
+//         );
+//         console.log(user);
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// };
 
-};
 
-const logout = async () => {
+// const login = async () => {
 
-};
+// };
+
+// const logout = async () => {
+
+// };
+
+
+
+// import { createContext, useContext, useEffect, useState } from "react";
+// import {
+//     createUserWithEmailAndPassword,
+//     signInWithEmailAndPassword,
+//     signOut,
+//     onAuthStateChanged
+// } from 'firebase/auth';
+// import { auth } from '../firebase-config';
+
+// // const [registerEmail, setRegisterEmail] = useState("");
+// // const [registerPassword, setRegisterPassword] = useState("");
+// // const [loginEmail, setLoginEmail] = useState("");
+// // const [loginPassword, setLoginPassword] = useState("");
+
+// // const initialAuthState = {
+// //     _id: '',
+// //     email: '',
+// //     accessToken: '',
+// // };
+
+// export const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//     const [user, setUser] = useState("");
+
+//     const register = (email, password) => {
+//         return createUserWithEmailAndPassword(auth, email, password);
+//     }
+
+//     const login = (email, password) => {
+//         return signInWithEmailAndPassword(auth, email, password);
+//     }
+
+//     // const logout = () => {
+//     //     setUser(initialAuthState);
+//     // };
+
+//     useEffect(() => {
+//         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+//             setUser(currentUser);
+//         });
+//         return () => {
+//             unsubscribe();
+//         }
+//     }, [])
+
+//     return (
+//         <AuthContext.Provider value={ }>
+//             {children}
+//         </AuthContext.Provider>
+//     );
+// };
+
+// export const useAuthContext = () => {
+//     const authState = useContext(AuthContext);
+
+//     return authState;
+// };

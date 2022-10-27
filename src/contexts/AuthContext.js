@@ -62,10 +62,17 @@
 
 
 
+// eslint-disable-next-line
 
 
-
-// import { useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    // signOut,
+    onAuthStateChanged
+} from 'firebase/auth';
+import { auth } from '../firebase-config';
 
 // const [registerEmail, setRegisterEmail] = useState("");
 // const [registerPassword, setRegisterPassword] = useState("");
@@ -78,28 +85,41 @@
 //     accessToken: '',
 // };
 
-// export const AuthContext = createContext();
+export const AuthContext = createContext();
 
-// export const AuthProvider = ({ children }) => {
-//     const [user, setUser] = useLocalStorage('user', initialAuthState);
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState("");
 
-//     const login = (authData) => {
-//         setUser(authData);
-//     }
+    const register = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
 
-//     const logout = () => {
-//         setUser(initialAuthState);
-//     };
+    const login = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
-//     return (
-//         <AuthContext.Provider value={{ user, login, logout, isAuthenticated: user.email }}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
+    // const logout = () => {
+    //     setUser(initialAuthState);
+    // };
 
-// export const useAuthContext = () => {
-//     const authState = useContext(AuthContext);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return () => {
+            unsubscribe();
+        }
+    }, [])
 
-//     return authState;
-// } 
+    return (
+        <AuthContext.Provider value={ { user, login, register, isAuthenticated: user.email } }>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+export const useAuthContext = () => {
+    const authState = useContext(AuthContext);
+
+    return authState;
+};

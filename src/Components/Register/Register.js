@@ -1,71 +1,89 @@
-import { useNavigate } from 'react-router';
+// eslint-disable-next-line
+import { useNavigate } from 'react-router-dom';
 import React from "react";
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from 'firebase/auth';
+// import { auth } from '../../firebase-config';
+
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
 
 function Register() {
     const navigate = useNavigate();
+    const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
+    const { register } = useAuthContext();
 
-    const registerSubmitHandler = (e) => {
+    const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
-        const register = async () => {
-            try {
-                const user = await createUserWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
-                );
-                console.log(user);
-            } catch (error) {
-                console.log(error.message);
-            }
-        };
+        try {
+            await register(email, password, repeatPassword);
+            addNotification('You successfully registered', types.success);
+            navigate('/');
 
-        let { email, password, repeatPassword } = Object.fromEntries(new FormData(e.currentTarget));
-        console.log(email, password)
-
-        if (password === '' || email === '' || repeatPassword === '') {
-            alert('All fields must be filled!');
+        } catch (error) {
+            alert(types.error);
+            console.log(types.error)
         }
 
-        authService.register(email, password)
-            .then(authData => {
-                login(authData);
-
-                navigate('/');
-            });
     }
+
+    if (password === '' || email === '' || repeatPassword === '') {
+        alert('All fields must be filled!');
+    }
+
     return (
         <>
             <div className="membership-form">
-
+    
                 <p>Are you a new member to my page?</p>
-
+    
                 {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
                 <form onSubmit={registerSubmitHandler} method="POST" className="membership-form webform" role="form">
                     <label htmlFor="email">E-mail</label>
-                    <input type="email" className="form-control" name="email" placeholder="yourEmailHere" id="email" />
-
+                    <input
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        placeholder="yourEmailHere"
+                        id="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+    
                     <label htmlFor="password">Password</label>
-
-                    <input type="password" className="form-control" name="password" placeholder="yourPassword" required id="password" />
-
+    
+                    <input 
+                    type="password" 
+                    className="form-control" 
+                    name="password" 
+                    placeholder="yourPassword" 
+                    required id="password" 
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+    
                     <label htmlFor="repeatPassword">Repeat Password</label>
-
-                    <input type="password" className="form-control" name="repeatPassword" placeholder="repeatPassword" required id="repeatPassword" />
+    
+                    <input 
+                    type="password" 
+                    className="form-control" 
+                    name="repeatPassword" 
+                    placeholder="repeatPassword" 
+                    required id="repeatPassword" 
+                    onChange={(e) => setRepeatPassword(e.target.value)}
+                    />
                     <button type="submit" className="form-control" id="submit-button" name="submit">Create an Account</button>
                 </form>
-
+    
             </div>
         </>
-
+    
     )
 
 }
+
+
 
 export default Register;
