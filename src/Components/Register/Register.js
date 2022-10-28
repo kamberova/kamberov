@@ -20,16 +20,25 @@ function Register() {
         e.preventDefault();
 
         try {
-            const user = await signUp(
+            await signUp(
                 email,
                 password
             );
-            console.log(user);
+            
             navigate('/')
         } catch (error) {
             alert(error.message);
 
         }
+
+        // let token = document.getElementById('repeatPassword');
+       
+        // let repeatPassword = token.value;
+        // console.log(repeatPassword)
+
+        // if(repeatPassword !== password) {
+        //     throw new Error('Password and repeat password must be the same!')
+        // };
 
     };
 
@@ -70,6 +79,7 @@ function Register() {
 
                     <input
                         type="password"
+                       
                         className="form-control"
                         name="repeatPassword"
                         placeholder="repeatPassword"

@@ -106,13 +106,12 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         });
-        return () => {
-            unsubscribe();
-        }
+        return unsubscribe();
+        
     }, [])
 
     return (
-        <AuthContext.Provider value={ { user, login, signUp } }>
+        <AuthContext.Provider value={{ user, login, signUp }}>
             {children}
         </AuthContext.Provider>
     );
