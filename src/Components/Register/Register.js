@@ -14,14 +14,13 @@ function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     // const [repeatPassword, setRepeatPassword] = useState("");
-    const { signUp, auth } = useAuthContext();
+    const { signUp } = useAuthContext();
 
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
             const user = await signUp(
-                auth,
                 email,
                 password
             );

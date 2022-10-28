@@ -26,13 +26,15 @@ import 'firebase/storage';
 
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_API_ID
+
+    apiKey: "AIzaSyBD6bIbamynvjsNbDJJ1zY4nmBP5JFO5Ms",
+    authDomain: "kambera-685c9.firebaseapp.com",
+    projectId: "kambera-685c9",
+    storageBucket: "kambera-685c9.appspot.com",
+    messagingSenderId: "759438117224",
+    appId: "1:759438117224:web:7c260450ae44b6b6352edd",
+    measurementId: "G-GM2XWBXRY1"
+
 };
 
 const app = initializeApp(firebaseConfig);
