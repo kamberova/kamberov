@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const baseUrl = 'https://kambera-28897-default-rtdb.firebaseio.com';
+const baseUrl = 'https://kambera-685c9-default-rtdb.firebaseio.com';
 
 export const getAll = () => request.get(`${baseUrl}/book-a-session`);
 

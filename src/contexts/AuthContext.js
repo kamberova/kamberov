@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 // import React, { useEffect, useState } from "react";
 // import db from "../firebase-config";
@@ -91,11 +92,11 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
     const auth = getAuth();
-    function signUp(auth, email, password) {
+    function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    function login(auth, email, password) {
+    function login(email, password) {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -109,7 +110,7 @@ export const AuthProvider = ({ children }) => {
         });
         return unsubscribe();
 
-    }, [auth])
+    }, [])
 
     return (
         <AuthContext.Provider value={{ user, signUp, login }}>
