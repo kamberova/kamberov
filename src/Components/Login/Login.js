@@ -88,7 +88,7 @@ function Login() {
             try {
                 await login(email, password);
                 // addNotification('You are logged in successfully', types.success);
-                navigate('/home');
+                navigate('/contacts');
             } catch (error) {
                 alert(error.message);
             }

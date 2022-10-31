@@ -73,7 +73,7 @@ import {
     // signOut,
     onAuthStateChanged
 } from 'firebase/auth';
-import { getAuth } from 'firebase/auth';
+import { auth } from '../firebase-config';
 // eslint-disable-next-line
 
 // const [registerEmail, setRegisterEmail] = useState("");
@@ -91,7 +91,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
-    const auth = getAuth();
+  
     function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
