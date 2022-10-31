@@ -67,16 +67,17 @@
 
 
 // eslint-disable-next-line
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useNotificationContext, types } from '../../contexts/NotificationContext';
+// import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
 // import * as authService from '../../services/authService';
 
 function Login() {
         const { login } = useAuthContext();
-        const { addNotification } = useNotificationContext();
+        // const { addNotification } = useNotificationContext();
         const navigate = useNavigate();
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
@@ -86,11 +87,10 @@ function Login() {
 
             try {
                 await login(email, password);
-                addNotification('You are logged in successfully', types.success);
-                navigate('/');
+                // addNotification('You are logged in successfully', types.success);
+                navigate('/home');
             } catch (error) {
-                alert(types.error);
-                console.log(types.error)
+                alert(error.message);
             }
 
             // if (password == '' || email == '') {

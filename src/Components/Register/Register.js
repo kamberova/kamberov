@@ -15,6 +15,7 @@ function Register() {
     const [password, setPassword] = useState("");
     // const [repeatPassword, setRepeatPassword] = useState("");
     const { signUp } = useAuthContext();
+   
 
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
@@ -24,16 +25,17 @@ function Register() {
                 email,
                 password
             );
-            
+
             navigate('/')
         } catch (error) {
             alert(error.message);
 
         }
 
+        console.log(email, password)
         // let token = document.getElementById('repeatPassword');
-       
-        // let repeatPassword = token.value;
+
+        // let repeatPassword = token.target.value;
         // console.log(repeatPassword)
 
         // if(repeatPassword !== password) {
@@ -79,12 +81,12 @@ function Register() {
 
                     <input
                         type="password"
-                       
+
                         className="form-control"
                         name="repeatPassword"
                         placeholder="repeatPassword"
                         required id="repeatPassword"
-                        // onChange={(e) => setRepeatPassword(e.target.value)}
+                    // onChange={(e) => setRepeatPassword(e.target.value)}
                     />
                     <button type="submit" className="form-control" id="submit-button" name="submit">Create an Account</button>
                 </form>

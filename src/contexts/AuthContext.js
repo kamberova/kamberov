@@ -62,7 +62,7 @@
 
 
 
-// eslint-disable-next-line
+
 
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -72,7 +72,8 @@ import {
     // signOut,
     onAuthStateChanged
 } from 'firebase/auth';
-import { auth } from '../firebase-config';
+import { auth } from 'firebase/auth';
+// eslint-disable-next-line
 
 // const [registerEmail, setRegisterEmail] = useState("");
 // const [registerPassword, setRegisterPassword] = useState("");
@@ -89,12 +90,12 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
-
-    const signUp = (email, password) => {
+    const auth = getAuth();
+    function signUp(auth, email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const login = (email, password) => {
+    function login(auth, email, password) {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -107,11 +108,11 @@ export const AuthProvider = ({ children }) => {
             setUser(currentUser);
         });
         return unsubscribe();
-        
-    }, [])
+
+    }, [auth])
 
     return (
-        <AuthContext.Provider value={{ user, login, signUp }}>
+        <AuthContext.Provider value={{ user, signUp, login }}>
             {children}
         </AuthContext.Provider>
     );
