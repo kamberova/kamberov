@@ -72,7 +72,7 @@ import {
     // signOut,
     onAuthStateChanged
 } from 'firebase/auth';
-import { auth } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 // eslint-disable-next-line
 
 // const [registerEmail, setRegisterEmail] = useState("");
