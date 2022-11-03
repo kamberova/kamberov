@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/react-in-jsx-scope */
-    // eslint-disable-next-line
+// eslint-disable-next-line
 
 // import React, { useEffect, useState } from 'react';
-// import db from '../../firebase-config';
+// import app from '../../firebase-config';
 // import { collection, getDocs } from 'firebase/firestore';
 
 // import * as bookService from '../../services/bookService';
@@ -23,20 +24,20 @@ function Home() {
     // }, [setBooking]);
 
     // const [users, setUsers] = useState([]);
-    // const usersCollectionRef = collection(db, 'users');
-  
+    // const usersCollectionRef = collection(app, 'users');
+
     // useEffect(() => {
-  
-    //   const getUsers = async () => {
-    //     const data = await getDocs(usersCollectionRef);
-    //     setUsers(data.docs.map((user) => ({ ...user.data(), id: user.id })))
-  
-    //   };
-  
-  
-    //   getUsers();
-  
-    // }, [usersCollectionRef]);
+
+    //     const getUsers = async () => {
+    //         const data = await getDocs(usersCollectionRef);
+    //         setUsers(data.docs.map((user) => ({ ...user.data(), id: user.id })))
+
+    //     };
+
+
+    //     getUsers();
+
+    // }, []);
 
 
 
@@ -56,7 +57,7 @@ function Home() {
                                 <h1 className="text-white" data-aos="fade-up" data-aos-delay="500">Upgrade your table tennis skills with me!</h1>
 
                                 <a href="/positioning-page" className="text-primary-color" data-aos="fade-up" data-aos-delay="600">Learn how to improve your body position!</a>
-                             
+
                             </div>
                         </div>
 

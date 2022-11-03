@@ -11,9 +11,7 @@ export const types = {
 
 const initialNotificationState = { show: false, message: '', type: types.error };
 
-export const NotificationProvider = ({
-    children
-}) => {
+export const NotificationProvider = ({ children }) => {
     const [notification, setNotification] = useState(initialNotificationState);
 
     const addNotification = useCallback((message, type = types.error) => {
