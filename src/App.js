@@ -30,20 +30,20 @@ import GuardedRoute from './Components/Common/GuardedRoute';
 
 function App() {
 
- 
+
 
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <NotificationProvider>
-          <div id="container">
+      <NotificationProvider>
+        <div id="container">
 
-            <Header />
+          <Header />
 
-            <Notification />
+          <Notification />
 
-            <main id="site-content">
-              
+          <main id="site-content">
+            <AuthProvider>
+
               <Routes>
                 <Route path="/" element={<Home />} />
 
@@ -70,13 +70,14 @@ function App() {
 
               </Routes>
 
-            </main>
+            </AuthProvider>
 
-            <Footer />
+          </main>
 
-          </div>
-        </NotificationProvider>
-      </AuthProvider>
+          <Footer />
+
+        </div>
+      </NotificationProvider>
     </ErrorBoundary >
   );
 }

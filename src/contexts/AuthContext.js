@@ -81,11 +81,11 @@ import { auth } from '../firebase-config';
 // const [loginEmail, setLoginEmail] = useState("");
 // const [loginPassword, setLoginPassword] = useState("");
 
-// const initialAuthState = {
-//     _id: '',
-//     email: '',
-//     accessToken: '',
-// };
+const initialAuthState = {
+    _id: '',
+    email: '',
+    accessToken: '',
+};
 
 export const AuthContext = createContext();
 
@@ -100,9 +100,9 @@ export const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    // const logout = () => {
-    //     setUser(initialAuthState);
-    // };
+    const logout = () => {
+        setUser(initialAuthState);
+    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -113,7 +113,7 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, signUp, login }}>
+        <AuthContext.Provider value={{ user, signUp, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

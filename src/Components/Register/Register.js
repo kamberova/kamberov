@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import React from "react";
 import { useState } from "react";
+import { Alert } from 'react-bootstrap';
 // import { auth } from '../../firebase-config';
 
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -13,6 +14,7 @@ function Register() {
     // const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     // const [repeatPassword, setRepeatPassword] = useState("");
     const { signUp } = useAuthContext();
    
@@ -20,15 +22,18 @@ function Register() {
     const registerSubmitHandler = async (e) => {
         e.preventDefault();
 
+        setError("");
+
         try {
             await signUp(
                 email,
-                password
+                password,
+                // repeatPassword
             );
 
             navigate('/')
         } catch (error) {
-            alert(error.message);
+            setError(error.message);
 
         }
 
@@ -53,7 +58,7 @@ function Register() {
             <div className="membership-form">
 
                 <p>Are you a new member to my page?</p>
-
+                {error && <Alert variant="danger">{error}</Alert>}
                 {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
                 <form onSubmit={registerSubmitHandler} method="POST" className="membership-form webform" role="form">
                     <label htmlFor="email">E-mail</label>

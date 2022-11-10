@@ -69,28 +69,33 @@
 // eslint-disable-next-line
 
 import React, { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 // import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
 // import * as authService from '../../services/authService';
 
-function Login() {
-        const { login } = useAuthContext();
+const Login = () => {
+       
         // const { addNotification } = useNotificationContext();
-        const navigate = useNavigate();
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
+        const [error, setError] = useState("");
+        const { login } = useAuthContext();
+        const navigate = useNavigate();
 
         const onLoginHandler = async (e) => {
             e.preventDefault();
 
+            setError("");
+
             try {
                 await login(email, password);
                 // addNotification('You are logged in successfully', types.success);
-                navigate('/contacts');
+                navigate('/');
             } catch (error) {
-                alert(error.message);
+                setError(error.message);
             }
 
             // if (password == '' || email == '') {
@@ -108,6 +113,7 @@ function Login() {
 
                 <div className="membership-form">
                     <p>Already have an acoount?</p>
+                    {error && <Alert variant="danger">{error}</Alert>}
                     {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
                     <form onSubmit={onLoginHandler} method="POST" className="login-form webform" role="form">
                         <label htmlFor="email">E-mail</label>
