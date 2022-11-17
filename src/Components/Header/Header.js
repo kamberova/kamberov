@@ -4,8 +4,8 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 
 function Header() {
-  const { user } = useAuthContext();
-  console.log(user)
+  const user  = useAuthContext();
+
   let guestNavigation = (
     <div id="guest">
       <ul className="navbar-nav ml-lg-auto">
@@ -41,7 +41,7 @@ function Header() {
 
   let userNavigation = (
     <div id="user">
-      <span className="text-white">Welcome, {user.email}</span>
+      <span className="text-white">Welcome, {user}</span>
       <ul className="navbar-nav ml-lg-auto">
 
         <li className="nav-item">
@@ -95,9 +95,7 @@ function Header() {
 
 
             <ul className="navbar-nav ml-lg-auto">
-              <li className="nav-item">
-                <a href="/" className="nav-link smoothScroll">Home</a>
-              </li>
+              
               {user
                 ? userNavigation
                 : guestNavigation
