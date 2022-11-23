@@ -84,7 +84,7 @@ import { auth } from '../firebase-config';
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export function AuthProvider ({ children }) {
     const [user, setUser] = useState(null);
   
     function signUp(email, password) {
@@ -117,6 +117,6 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuthContext = () => {
     const authState = useContext(AuthContext);
-
+    console.log(authState)
     return authState;
 };

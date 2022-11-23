@@ -4,8 +4,9 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 
 function Header() {
-  const user  = useAuthContext();
-
+  let user  = useAuthContext();
+  
+  console.log(user)
   let guestNavigation = (
     <div id="guest">
       <ul className="navbar-nav ml-lg-auto">
