@@ -2,6 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 // eslint-disable-next-line
 
+
 // import React, { useEffect, useState } from 'react';
 // import app from '../../firebase-config';
 // import { collection, Firestore, getDocs } from 'firebase/firestore';
@@ -9,38 +10,44 @@
 // import * as bookService from '../../services/bookService';
 
 
+// function Home() {
+
+// const [setBooking] = useState([]);
+
+// useEffect(() => {
+//     bookService.getAll()
+//         .then(result => {
+//             setBooking(result);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+// }, [setBooking]);
+
+// const [users, setUsers] = useState([]);
+// const usersCollectionRef = collection(Firestore(app, 'users'));
+
+// useEffect(() => {
+
+//     const getUsers = async () => {
+//         const data = await getDocs(usersCollectionRef);
+//         setUsers(data.docs.map((user) => ({ ...user.data(), id: user.id })))
+
+//     };
+
+
+//     getUsers();
+
+// }, []);
+
+// import { useAuthContext } from "../../contexts/AuthContext";
+
+
 function Home() {
 
-    // const [setBooking] = useState([]);
-
-    // useEffect(() => {
-    //     bookService.getAll()
-    //         .then(result => {
-    //             setBooking(result);
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }, [setBooking]);
-
-    // const [users, setUsers] = useState([]);
-    // const usersCollectionRef = collection(Firestore(app, 'users'));
-
-    // useEffect(() => {
-
-    //     const getUsers = async () => {
-    //         const data = await getDocs(usersCollectionRef);
-    //         setUsers(data.docs.map((user) => ({ ...user.data(), id: user.id })))
-
-    //     };
-
-
-    //     getUsers();
-
-    // }, []);
-
-
-
+  
+  
+     
     return (
 
         <div>
@@ -58,7 +65,7 @@ function Home() {
 
                                 <a href="/positioning-page" className="text-primary-color" data-aos="fade-up" data-aos-delay="600">Learn how to improve your body position!</a>
 
-                    
+
                             </div>
                         </div>
 

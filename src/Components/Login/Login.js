@@ -93,7 +93,7 @@ const Login = () => {
             try {
                 await login(email, password);
                 // addNotification('You are logged in successfully', types.success);
-                navigate('/');
+                navigate("/");
             } catch (error) {
                 setError(error.message);
             }

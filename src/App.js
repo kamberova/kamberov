@@ -46,6 +46,7 @@ function App() {
 
               <Routes>
                 <Route path="/" element={<Home />} />
+                {/* <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} /> */}
 
                 <Route path="/about" element={<About />} />
                 <Route path="/positioning-page" element={<PositioningPage />} />

@@ -67,12 +67,7 @@
 
 
 import { createContext, useContext, useEffect, useState } from "react";
-import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    // signOut,
-    onAuthStateChanged
-} from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 // eslint-disable-next-line
 
@@ -81,27 +76,28 @@ import { auth } from '../firebase-config';
 // const [loginEmail, setLoginEmail] = useState("");
 // const [loginPassword, setLoginPassword] = useState("");
 
-const initialAuthState = {
-    _id: '',
-    email: '',
-    accessToken: '',
-};
+// const initialAuthState = {
+//     _id: '',
+//     email: '',
+//     accessToken: '',
+// };
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState(null);
   
     function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     function login(email, password) {
+        
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const logout = () => {
-        setUser(initialAuthState);
+    function logout () {
+        return signOut(auth);
     };
 
     useEffect(() => {
@@ -110,7 +106,7 @@ export const AuthProvider = ({ children }) => {
         });
         return unsubscribe();
 
-    }, [])
+    }, []);
 
     return (
         <AuthContext.Provider value={{ user, signUp, login, logout }}>
