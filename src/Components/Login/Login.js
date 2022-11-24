@@ -79,11 +79,11 @@ import { useAuthContext } from '../../contexts/AuthContext';
 const Login = () => {
        
         // const { addNotification } = useNotificationContext();
-        const [email, setEmail] = useState("");
-        const [password, setPassword] = useState("");
-        const [error, setError] = useState("");
-        const { login } = useAuthContext();
-        const navigate = useNavigate();
+        let [email, setEmail] = useState("");
+        let [password, setPassword] = useState("");
+        let [error, setError] = useState("");
+        let { login } = useAuthContext();
+        let navigate = useNavigate();
 
         const onLoginHandler = async (e) => {
             e.preventDefault();

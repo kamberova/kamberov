@@ -85,7 +85,7 @@ import { auth } from '../firebase-config';
 export const AuthContext = createContext();
 
 export function AuthProvider ({ children }) {
-    const [user, setUser] = useState(null);
+    let [user, setUser] = useState(null);
   
     function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -101,7 +101,7 @@ export function AuthProvider ({ children }) {
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        let unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         });
         return unsubscribe();
@@ -115,8 +115,8 @@ export function AuthProvider ({ children }) {
     );
 };
 
-export const useAuthContext = () => {
-    const authState = useContext(AuthContext);
+export function useAuthContext  () {
+    let authState = useContext(AuthContext);
     console.log(authState)
     return authState;
 };

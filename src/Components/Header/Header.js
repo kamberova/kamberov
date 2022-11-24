@@ -1,12 +1,14 @@
 // import { Route, Switch, Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
+import React from "react";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 
 function Header() {
   let user  = useAuthContext();
-  
+
   console.log(user)
+  
   let guestNavigation = (
     <div id="guest">
       <ul className="navbar-nav ml-lg-auto">
