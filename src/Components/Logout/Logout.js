@@ -20,3 +20,15 @@ const Logout = () => {
 };
 
 export default Logout;
+
+// import { signOut } from 'firebase/auth';
+// import { auth } from '../utils/firestore'; // update path to your firestore config
+
+// signOut(auth)
+//     .then(() => {
+//         console.log('logged out');
+//         navigate('/');
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     });

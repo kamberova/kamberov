@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { Routes, Route } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 // import { React, useEffect, useState } from 'react';
 // import db from './firebase-config.js';
 // import { collection, getDocs } from 'firebase/firestore/lite';
@@ -30,7 +31,7 @@ import GuardedRoute from './Components/Common/GuardedRoute';
 
 function App() {
 
-
+const [currentUser, setCurrentUser] = useState(null)
 
   return (
     <ErrorBoundary>
@@ -42,7 +43,7 @@ function App() {
           <Notification />
 
           <main id="site-content">
-            <AuthProvider>
+            <AuthProvider value={currentUser}>
 
               <Routes>
                 <Route path="/" element={<Home />} />

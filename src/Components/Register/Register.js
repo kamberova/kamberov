@@ -3,40 +3,50 @@
 import { useNavigate } from 'react-router-dom';
 import React from "react";
 import { useState } from "react";
-// import { Alert } from 'react-bootstrap';
-// import { auth } from '../../firebase-config';
+import { Alert } from 'react-bootstrap';
+import { auth } from '../../firebase-config';
 
 // import { useAuthContext } from '../../contexts/AuthContext';
 // import { useNotificationContext, types } from '../../contexts/NotificationContext';
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
     const navigate = useNavigate();
     // // const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [error, setError] = useState("");
-    // // const [repeatPassword, setRepeatPassword] = useState("");
+    const [error, setError] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
     // const { signUp } = useAuthContext();
 
 
-    const registerSubmitHandler = async (e) => {
-        e.preventDefault();
+    const registerSubmitHandler = async (event) => {
+        event.preventDefault();
+        if (password === '' || email === '' || repeatPassword === '') {
+            setError('All fields must be filled!');
+            return;
+        };
 
-        
+        if (repeatPassword !== password) {
+            setError('Password and repeat password must be the same!');
+            return;
+        };
 
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-              let  user = userCredential.user;
-                navigate('/');
-            })
-            .catch((error) => {
+        try {
 
-                console.log(error.message);
-                // ..
-            });
+            const user = await createUserWithEmailAndPassword(auth, email, password);
+            console.log(user);
+
+          
+            navigate('/');
+        } catch (error) {
+
+            console.log(error.message);
+            // ..
+        };
+
+
         // setError("");
 
         // try {
@@ -52,7 +62,6 @@ function Register() {
 
         // }
 
-        console.log(user)
         // let token = document.getElementById('repeatPassword');
 
         // let repeatPassword = token.target.value;
@@ -73,7 +82,7 @@ function Register() {
             <div className="membership-form">
 
                 <p>Are you a new member to my page?</p>
-                {/* {error && <Alert variant="danger">{error}</Alert>} */}
+                {error && <Alert variant="danger">{error}</Alert>}
                 {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
                 <form onSubmit={registerSubmitHandler} method="POST" className="membership-form webform" role="form">
                     <label htmlFor="email">E-mail</label>
@@ -83,7 +92,7 @@ function Register() {
                         name="email"
                         placeholder="yourEmailHere"
                         id="email"
-                        onChange={(e) => setEmail(user.email)}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <label htmlFor="password">Password</label>
@@ -94,7 +103,7 @@ function Register() {
                         name="password"
                         placeholder="yourPassword"
                         required id="password"
-                        onChange={(e) => setPassword(user.password)}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
 
                     <label htmlFor="repeatPassword">Repeat Password</label>
@@ -106,7 +115,7 @@ function Register() {
                         name="repeatPassword"
                         placeholder="repeatPassword"
                         required id="repeatPassword"
-                    // onChange={(e) => setRepeatPassword(e.target.value)}
+                        onChange={(e) => setRepeatPassword(e.target.value)}
                     />
                     <button type="submit" className="form-control" id="submit-button" name="submit">Create an Account</button>
                 </form>

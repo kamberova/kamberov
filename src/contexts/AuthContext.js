@@ -69,6 +69,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
+import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line
 
 // const [registerEmail, setRegisterEmail] = useState("");
@@ -86,19 +87,26 @@ export const AuthContext = createContext();
 
 export function AuthProvider ({ children }) {
     let [user, setUser] = useState(null);
-  
+    const navigate = useNavigate()
     function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     function login(email, password) {
-        
-        return signInWithEmailAndPassword(auth, email, password);
+
+        return signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            navigate('/')
+        })
+        .catch ((err) => {
+            alert(err.message);
+        })
     }
 
     function logout () {
         return signOut(auth);
     };
+    
 
     useEffect(() => {
         let unsubscribe = onAuthStateChanged(auth, (currentUser) => {

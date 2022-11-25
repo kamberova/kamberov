@@ -1,14 +1,35 @@
 // import { Route, Switch, Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import React from "react";
-import { useAuthContext } from "../../contexts/AuthContext";
+// import { useAuthContext } from "../../contexts/AuthContext";
+// import { auth } from '../../firebase-config';
 
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { useNavigate, useNavigation } from "react-router-dom";
 
 function Header() {
-  let user  = useAuthContext();
 
+  const auth = getAuth();
+
+  // let email = '';
+  let user = null;
+
+
+  onAuthStateChanged(auth, (currentUser) => {
+
+    // return auth.currentUser(user);
+    if (currentUser) {
+      // const uid = user.uid;
+      user = auth.currentUser;
+      console.log(user.email);
+
+      // user.id = currentUser.uid;
+      // user.email = currentUser.email;
+      return user;
+    }
+  });
   console.log(user)
-  
+
   let guestNavigation = (
     <div id="guest">
       <ul className="navbar-nav ml-lg-auto">
@@ -44,7 +65,7 @@ function Header() {
 
   let userNavigation = (
     <div id="user">
-      <span className="text-white">Welcome, {user}</span>
+      <span className="text-white">Welcome, {user ? user.email : ''}</span>
       <ul className="navbar-nav ml-lg-auto">
 
         <li className="nav-item">
@@ -98,10 +119,11 @@ function Header() {
 
 
             <ul className="navbar-nav ml-lg-auto">
-              
-              {user
-                ? userNavigation
-                : guestNavigation
+
+
+              { user === null
+                ? guestNavigation
+                : userNavigation
               }
 
             </ul>
