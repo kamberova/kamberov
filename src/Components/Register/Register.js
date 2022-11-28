@@ -5,13 +5,12 @@ import React from "react";
 import { useState } from "react";
 import { Alert } from 'react-bootstrap';
 import { auth } from '../../firebase-config';
-
-// import { useAuthContext } from '../../contexts/AuthContext';
-// import { useNotificationContext, types } from '../../contexts/NotificationContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
+    const { currentUser, register } = useAuthContext()
     const navigate = useNavigate();
     // // const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
@@ -21,57 +20,81 @@ function Register() {
     // const { signUp } = useAuthContext();
 
 
-    const registerSubmitHandler = async (event) => {
+
+    async function registerSubmitHandler(event) {
         event.preventDefault();
-        if (password === '' || email === '' || repeatPassword === '') {
-            setError('All fields must be filled!');
-            return;
+
+        setError('')
+        if (password !== repeatPassword) {
+            // Create a new user with email and password using firebase
+            return alert("Passwords do not match")
         };
 
-        if (repeatPassword !== password) {
-            setError('Password and repeat password must be the same!');
-            return;
-        };
-
+        createUserWithEmailAndPassword(auth, email, password)
         try {
+            await register(email, password)
+            console.log(currentUser.email)
+            navigate('/')
+        }
+        catch (error) {
 
-            const user = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(user);
+        }
+    }
 
-          
-            navigate('/');
-        } catch (error) {
-
-            console.log(error.message);
-            // ..
-        };
+    setEmail('')
+    setPassword('')
+    setRepeatPassword('')
 
 
-        // setError("");
+    // if (password === '' || email === '' || repeatPassword === '') {
+    //     setError('All fields must be filled!');
+    //     return;
+    // };
 
-        // try {
-        //     await signUp(
-        //         email,
-        //         password,
-        //         // repeatPassword
-        //     );
+    // if (repeatPassword !== password) {
+    //     setError('Password and repeat password must be the same!');
+    //     return;
+    // };
 
-        //     navigate('/')
-        // } catch (error) {
-        //     setError(error.message);
+    // try {
 
-        // }
+    //     const user = await createUserWithEmailAndPassword(auth, email, password);
+    //     console.log(user);
 
-        // let token = document.getElementById('repeatPassword');
 
-        // let repeatPassword = token.target.value;
-        // console.log(repeatPassword)
+    //     navigate('/');
+    // } catch (error) {
 
-        // if(repeatPassword !== password) {
-        //     throw new Error('Password and repeat password must be the same!')
-        // };
+    //     console.log(error.message);
+    //     // ..
+    // };
 
-    };
+
+    // setError("");
+
+    // try {
+    //     await signUp(
+    //         email,
+    //         password,
+    //         // repeatPassword
+    //     );
+
+    //     navigate('/')
+    // } catch (error) {
+    //     setError(error.message);
+
+    // }
+
+    // let token = document.getElementById('repeatPassword');
+
+    // let repeatPassword = token.target.value;
+    // console.log(repeatPassword)
+
+    // if(repeatPassword !== password) {
+    //     throw new Error('Password and repeat password must be the same!')
+    // };
+
+
 
     // if (password === '' || email === '' || repeatPassword === '') {
     //     alert('All fields must be filled!');
@@ -125,8 +148,8 @@ function Register() {
 
     )
 
-}
 
+}
 
 
 export default Register;

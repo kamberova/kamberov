@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
-// import { React, useEffect, useState } from 'react';
-// import db from './firebase-config.js';
+import { React, useEffect, useState } from 'react';
+import { auth } from './firebase-config'
 // import { collection, getDocs } from 'firebase/firestore/lite';
-
+import { onAuthStateChanged } from 'firebase/auth';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { NotificationProvider } from './contexts/NotificationContext'
@@ -31,19 +30,27 @@ import GuardedRoute from './Components/Common/GuardedRoute';
 
 function App() {
 
-const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+    })
+  }, [])
 
   return (
     <ErrorBoundary>
       <NotificationProvider>
-        <div id="container">
+        <AuthProvider value={currentUser}>
 
-          <Header />
+          <div id="container">
 
-          <Notification />
+            <Header />
 
-          <main id="site-content">
-            <AuthProvider value={currentUser}>
+            <Notification />
+
+            <main id="site-content">
+
 
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -72,13 +79,14 @@ const [currentUser, setCurrentUser] = useState(null)
 
               </Routes>
 
-            </AuthProvider>
 
-          </main>
+            </main>
 
-          <Footer />
+            <Footer />
 
-        </div>
+          </div>
+        </AuthProvider>
+
       </NotificationProvider>
     </ErrorBoundary >
   );

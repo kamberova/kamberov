@@ -68,44 +68,88 @@
 
 // eslint-disable-next-line
 
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { auth } from '../../firebase-config';
+// import { useNavigate } from 'react-router-dom';
+// import { Alert } from 'react-bootstrap';
+
+
+// const Login = () => {
+
+//     let [email, setEmail] = useState("");
+//     let [password, setPassword] = useState("");
+//     const [error, setError] = useState("");
+
+//     const navigate = useNavigate();
+
+//     const onLoginHandler = async (e) => {
+//         e.preventDefault();
+
+//         if (password === '' || email === '') {
+//             setError('All fields must be filled!');
+//             return;
+//         };
+
+//         try {
+
+//             const user = await signInWithEmailAndPassword(auth, email, password);
+//             console.log(user);
+
+//             navigate('/');
+//         } catch (err) {
+
+//             console.log(err.message);
+//             // ..
+//         };
+
+//     }
+
+import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useState } from "react";
+import { Alert } from 'react-bootstrap';
+import { auth } from '../../firebase-config';
+
 
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../firebase-config';
-import { useNavigate } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
 
-
-const Login = () => {
-
-    let [email, setEmail] = useState("");
-    let [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-
+function Login() {
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
 
-    const onLoginHandler = async (e) => {
-        e.preventDefault();
+    const validatePassword = () => {
+        let isValid = true
+        if (password !== '' && repeatPassword !== '') {
+            if (password !== repeatPassword) {
+                isValid = false
+                setError('Passwords does not match')
+            }
+        }
+        return isValid
+    };
 
-        if (password === '' || email === '') {
-            setError('All fields must be filled!');
-            return;
-        };
+    const onLoginHandler = async (event) => {
+        event.preventDefault();
 
-        try {
-
-            const user = await signInWithEmailAndPassword(auth, email, password);
-            console.log(user);
-
-            navigate('/');
-        } catch (err) {
-           
-            console.log(err.message);
-            // ..
-        };
-
+        setError('')
+        if (validatePassword()) {
+            // Create a new user with email and password using firebase
+            signInWithEmailAndPassword(auth, email, password)
+                .then((res) => {
+                    console.log(res.user)
+                    navigate('/')
+                })
+                .catch(err => setError(err.message))
+        }
+        setEmail('')
+        setPassword('')
+        setRepeatPassword('')
     }
-
     return (
 
         <>

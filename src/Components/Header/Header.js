@@ -10,32 +10,34 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 function Header() {
 
   const auth = getAuth();
-
   // let email = '';
-  let user = auth.currentUser;
+  // let user = auth.currentUser;
 
-  let isAuthent = '';
+  let isAuthent = false;
 
 
- 
+  let user = {};
 
   onAuthStateChanged(auth, (currentUser) => {
 
     // return auth.currentUser(user);
     if (currentUser) {
       // const uid = user.uid;
-      user.id = currentUser.uid; 
-      console.log(user.email);
+      user = auth.currentUser;
+      console.log(auth.currentUser.uid)
+
+      user.id = currentUser.id;
+      // console.log(user.email);
       isAuthent = true;
       // user.id = currentUser.uid;
       // user.email = currentUser.email;
-     
+
     } else {
       isAuthent = false;
-    
     }
+    console.log(isAuthent)
   });
-  console.log(user)
+
 
   let guestNavigation = (
     <div id="guest">
@@ -128,11 +130,11 @@ function Header() {
             <ul className="navbar-nav ml-lg-auto">
 
 
-              { isAuthent 
-                ? userNavigation
-                : guestNavigation
+              {isAuthent
+                ? guestNavigation
+                : userNavigation
               }
-  {console.log(isAuthent)}
+
             </ul>
 
 

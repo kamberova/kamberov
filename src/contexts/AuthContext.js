@@ -66,10 +66,10 @@
 
 
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase-config';
-import { useNavigate } from "react-router-dom";
+// import React, { useContext, useEffect, useState } from "react";
+// import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+// import { auth } from '../firebase-config';
+// import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line
 
 // const [registerEmail, setRegisterEmail] = useState("");
@@ -82,49 +82,97 @@ import { useNavigate } from "react-router-dom";
 //     email: '',
 //     accessToken: '',
 // };
+// import React, { useContext } from "react";
 
-export const AuthContext = createContext();
+// export const AuthContext = React.createContext();
 
-export function AuthProvider ({ children }) {
-    let [user, setUser] = useState(null);
-    const navigate = useNavigate()
+// export function AuthProvider ({ children }) {
+//     let [user, setUser] = useState(null);
+//     const navigate = useNavigate()
+//     function signUp(email, password) {
+//         return createUserWithEmailAndPassword(auth, email, password);
+//     }
+
+//     function login(email, password) {
+
+//         return signInWithEmailAndPassword(auth, email, password)
+//         .then(() => {
+//             navigate('/')
+//         })
+//         .catch ((err) => {
+//             alert(err.message);
+//         })
+//     }
+
+//     function logout () {
+//         return signOut(auth);
+//     };
+
+
+//     useEffect(() => {
+//         let unsubscribe = auth.onAuthStateChanged((currentUser) => {
+//             setUser(currentUser);
+//         });
+//         return unsubscribe();
+
+//     }, []);
+
+//     return (
+//         <AuthContext.Provider value={{ user, signUp, login, logout }}>
+//             {children}
+//         </AuthContext.Provider>
+//     );
+// };
+
+// export function useAuthContext  () {
+//     let authState = useContext(AuthContext);
+//     console.log(authState)
+//     return authState;
+// };
+import { createContext, useContext, useState, useEffect } from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase-config';
+
+const AuthContext = createContext();
+
+export function useAuthContext() {
+    return useContext(AuthContext);
+}
+
+export function AuthProvider({ children }) {
+    const [error, setError] = useState("");
+
+    const [currentUser, setCurrentUser] = useState();
+
     function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     function login(email, password) {
-
-        return signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-            navigate('/')
-        })
-        .catch ((err) => {
-            alert(err.message);
-        })
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
-    function logout () {
-        return signOut(auth);
-    };
-    
-
     useEffect(() => {
-        let unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setCurrentUser(user);
         });
-        return unsubscribe();
 
+        return unsubscribe;
     }, []);
 
+    const value = {
+        currentUser,
+        login,
+        signUp,
+        error,
+        setError
+    };
+
+
     return (
-        <AuthContext.Provider value={{ user, signUp, login, logout }}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
-    );
-};
+    )
 
-export function useAuthContext  () {
-    let authState = useContext(AuthContext);
-    console.log(authState)
-    return authState;
 };
