@@ -12,20 +12,27 @@ function Header() {
   const auth = getAuth();
 
   // let email = '';
-  let user = null;
+  let user = auth.currentUser;
 
+  let isAuthent = '';
+
+
+ 
 
   onAuthStateChanged(auth, (currentUser) => {
 
     // return auth.currentUser(user);
     if (currentUser) {
       // const uid = user.uid;
-      user = auth.currentUser;
+      user.id = currentUser.uid; 
       console.log(user.email);
-
+      isAuthent = true;
       // user.id = currentUser.uid;
       // user.email = currentUser.email;
-      return user;
+     
+    } else {
+      isAuthent = false;
+    
     }
   });
   console.log(user)
@@ -121,11 +128,11 @@ function Header() {
             <ul className="navbar-nav ml-lg-auto">
 
 
-              { user === null
-                ? guestNavigation
-                : userNavigation
+              { isAuthent 
+                ? userNavigation
+                : guestNavigation
               }
-
+  {console.log(isAuthent)}
             </ul>
 
 
