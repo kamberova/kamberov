@@ -1,15 +1,19 @@
-// import { Route, Switch, Redirect } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+
 import React from "react";
 import { useAuthContext } from "../../contexts/AuthContext";
-// import { auth } from '../../firebase-config';
-
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import { useNavigate, useNavigation } from "react-router-dom";
 
 function Header() {
-  
+
   const { user } = useAuthContext();
+  let userName = '';
+
+  if (user) {
+    let token = user.email.split('@');
+    let name = token[0];
+    let firstLetter = name[0].toUpperCase();
+    let restName = name.slice(1);
+    userName = firstLetter + restName + '!';
+  }
 
   let guestNavigation = (
     <div id="guest">
@@ -46,7 +50,7 @@ function Header() {
 
   let userNavigation = (
     <div id="user">
-      <span className="text-white">Welcome, {user ? user.email : ''}</span>
+      <span className="text-white">Welcome, {user ? userName : ''}</span>
       <ul className="navbar-nav ml-lg-auto">
 
         <li className="nav-item">
