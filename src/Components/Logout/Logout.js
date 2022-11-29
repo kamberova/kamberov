@@ -19,13 +19,29 @@
 // };
 
 // export default Logout;
+// import React from 'react';
+// import app from '../../firebase-config'
+// import { auth } from '../../firebase-config';
+
+// import { useNavigate } from 'react-router-dom';
+
+
+// const Logout = () => {
+
+//     let navigate = useNavigate();
+
+//     auth().signOut().then(() => {
+//         navigate('/');
+//     }).catch((error) => {
+//         console.error(error)
+//     })
+
 
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase-config'; // update path to your firestore config
 import { useNavigate } from 'react-router-dom';
 
-const Logout = (e) => {
-    e.preventDefault();
+const Logout = () => {
 
     const navigate = useNavigate();
 
@@ -37,6 +53,8 @@ const Logout = (e) => {
         .catch((error) => {
             console.log(error);
         });
+    return null;
 }
+// }
 
 export default Logout;

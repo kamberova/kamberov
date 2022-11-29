@@ -142,7 +142,7 @@ function Login() {
             signInWithEmailAndPassword(auth, email, password)
                 .then((res) => {
                     console.log(res.user)
-                    navigate('/')
+                    navigate('/');
                 })
                 .catch(err => setError(err.message))
         }

@@ -1,44 +1,15 @@
 // import { Route, Switch, Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import React from "react";
-// import { useAuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 // import { auth } from '../../firebase-config';
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
 // import { useNavigate, useNavigation } from "react-router-dom";
 
 function Header() {
-
-  const auth = getAuth();
-  // let email = '';
-  // let user = auth.currentUser;
-
-  let isAuthent = false;
-
-  console.log(auth.user)
-  let user = {};
-
-  onAuthStateChanged(auth, (currentUser) => {
-
-    // return auth.currentUser(user);
-    if (currentUser) {
-      // const uid = user.uid;
-      user = auth.currentUser;
-      console.log(auth.currentUser.uid)
-      console.log(isAuthent)
-
-      user.id = auth.currentUser.id;
-      // console.log(user.email);
-      return isAuthent = true;
-      // user.id = currentUser.uid;
-      // user.email = currentUser.email;
-
-    } else {
-      return isAuthent = false;
-    }
-    
-  });
-
+  
+  const { user } = useAuthContext();
 
   let guestNavigation = (
     <div id="guest">
@@ -131,7 +102,7 @@ function Header() {
             <ul className="navbar-nav ml-lg-auto">
 
 
-              {user.id
+              {user
                 ? userNavigation
                 : guestNavigation
               }

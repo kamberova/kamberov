@@ -110,8 +110,8 @@
 
 
 //     useEffect(() => {
-//         let unsubscribe = auth.onAuthStateChanged((currentUser) => {
-//             setUser(currentUser);
+//         let unsubscribe = auth.onAuthStateChanged((user) => {
+//             setUser(user);
 //         });
 //         return unsubscribe();
 
@@ -142,7 +142,7 @@ export function useAuthContext() {
 export function AuthProvider({ children }) {
     const [error, setError] = useState("");
 
-    const [currentUser, setCurrentUser] = useState();
+    const [user, setUser] = useState("");
 
     function signUp(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -154,14 +154,14 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
-            setCurrentUser(user);
+            setUser(user);
         });
 
         return unsubscribe;
     }, []);
 
     const value = {
-        currentUser,
+        user,
         login,
         signUp,
         error,
