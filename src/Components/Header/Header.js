@@ -15,7 +15,7 @@ function Header() {
 
   let isAuthent = false;
 
-
+  console.log(auth.user)
   let user = {};
 
   onAuthStateChanged(auth, (currentUser) => {
@@ -25,17 +25,18 @@ function Header() {
       // const uid = user.uid;
       user = auth.currentUser;
       console.log(auth.currentUser.uid)
+      console.log(isAuthent)
 
-      user.id = currentUser.id;
+      user.id = auth.currentUser.id;
       // console.log(user.email);
-      isAuthent = true;
+      return isAuthent = true;
       // user.id = currentUser.uid;
       // user.email = currentUser.email;
 
     } else {
-      isAuthent = false;
+      return isAuthent = false;
     }
-    console.log(isAuthent)
+    
   });
 
 
@@ -130,9 +131,9 @@ function Header() {
             <ul className="navbar-nav ml-lg-auto">
 
 
-              {isAuthent
-                ? guestNavigation
-                : userNavigation
+              {user.id
+                ? userNavigation
+                : guestNavigation
               }
 
             </ul>

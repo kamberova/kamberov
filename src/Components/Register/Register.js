@@ -5,12 +5,12 @@ import React from "react";
 import { useState } from "react";
 import { Alert } from 'react-bootstrap';
 import { auth } from '../../firebase-config';
-import { useAuthContext } from '../../contexts/AuthContext';
+// import { useAuthContext } from '../../contexts/AuthContext';
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
-    const { currentUser, register } = useAuthContext()
+    // const { signUp } = useAuthContext()
     const navigate = useNavigate();
     // // const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
@@ -19,33 +19,36 @@ function Register() {
     const [repeatPassword, setRepeatPassword] = useState("");
     // const { signUp } = useAuthContext();
 
+    const validatePassword = () => {
+        let isValid = true
+        if (password !== '' && repeatPassword !== '') {
+            if (password !== repeatPassword) {
+                isValid = false
+                setError('Passwords does not match')
+            }
+        }
+        return isValid
+    };
 
-
-    async function registerSubmitHandler(event) {
+    const registerSubmitHandler = async (event) => {
         event.preventDefault();
 
         setError('')
-        if (password !== repeatPassword) {
+        if (validatePassword()) {
             // Create a new user with email and password using firebase
-            return alert("Passwords do not match")
-        };
-
-        createUserWithEmailAndPassword(auth, email, password)
-        try {
-            await register(email, password)
-            console.log(currentUser.email)
-            navigate('/')
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((res) => {
+                    console.log(res.user)
+                    navigate('/')
+                })
+                .catch(err => setError(err.message))
         }
-        catch (error) {
 
-        }
+        setEmail('')
+        setPassword('')
+        setRepeatPassword('')
+
     }
-
-    setEmail('')
-    setPassword('')
-    setRepeatPassword('')
-
-
     // if (password === '' || email === '' || repeatPassword === '') {
     //     setError('All fields must be filled!');
     //     return;
