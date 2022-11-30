@@ -1,34 +1,34 @@
 import { useNavigate } from 'react-router-dom';
 import React from "react";
 import { useState } from "react";
-import { Alert } from 'react-bootstrap';
+// import { Alert } from 'react-bootstrap';
 import { auth } from '../../firebase-config';
 
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
+
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [repeatPassword, setRepeatPassword] = useState("");
+
 
     const validatePassword = () => {
-        let isValid = true
-        if (password !== '' && repeatPassword !== '') {
-            if (password !== repeatPassword) {
-                isValid = false
-                setError('Passwords does not match')
-            }
-        }
-        return isValid
+        let isValid = true;
+
+        if (email === '' || password === '') {
+            isValid = false
+            alert('All fields must be filled');
+        };
+
+        return isValid;
     };
 
     const onLoginHandler = async (event) => {
         event.preventDefault();
 
-        setError('')
+
         if (validatePassword()) {
             // Create a new user with email and password using firebase
             signInWithEmailAndPassword(auth, email, password)
@@ -36,19 +36,21 @@ function Login() {
                     console.log(res.user)
                     navigate('/');
                 })
-                .catch(err => setError(err.message))
+                .catch((error) => {
+                    console.log(error.message)
+                });
         }
         setEmail('')
         setPassword('')
-        setRepeatPassword('')
-    }
+    };
+
     return (
 
         <>
 
             <div className="membership-form">
                 <p>Already have an acoount?</p>
-                {error && <Alert variant="danger">{error}</Alert>}
+                {/* {error && <Alert variant="danger">{error}</Alert>} */}
                 {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
                 <form onSubmit={onLoginHandler} method="POST" className="login-form webform" role="form">
                     <label htmlFor="email">E-mail</label>

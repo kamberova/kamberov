@@ -1,32 +1,35 @@
 /* eslint-disable no-undef */
 // eslint-disable-next-line
 import { useNavigate } from 'react-router-dom';
-import React from "react";
 import { useState } from "react";
 import { Alert } from 'react-bootstrap';
 import { auth } from '../../firebase-config';
-// import { useAuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from "../../contexts/AuthContext";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
-    // const { signUp } = useAuthContext()
     const navigate = useNavigate();
-    // // const { addNotification } = useNotificationContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
-    // const { signUp } = useAuthContext();
+    let { user } = useAuthContext();
+
 
     const validatePassword = () => {
-        let isValid = true
-        if (password !== '' && repeatPassword !== '') {
-            if (password !== repeatPassword) {
-                isValid = false
-                setError('Passwords does not match')
-            }
-        }
+        let isValid = true;
+
+        if (email === '' || password === '' || repeatPassword === '') {
+            isValid = false
+            alert('All fields must be filled!');
+        };
+
+        if (password !== repeatPassword) {
+            isValid = false
+            alert('Passwords does not match!');
+        };
+
         return isValid
     };
 
@@ -38,11 +41,22 @@ function Register() {
             // Create a new user with email and password using firebase
             createUserWithEmailAndPassword(auth, email, password)
                 .then((res) => {
-                    console.log(res.user)
+                    console.log(res.user.uid);
+                    
+                    user = {
+                        email,
+                        password,
+                        id: res.user.uid
+                    };
+                    console.log(user.id)
                     navigate('/')
                 })
-                .catch(err => setError(err.message))
+                .catch(err => setError(err.message));
+            return user;
         }
+
+        console.log(user.id)
+
 
         setEmail('')
         setPassword('')
@@ -136,7 +150,6 @@ function Register() {
 
                     <input
                         type="password"
-
                         className="form-control"
                         name="repeatPassword"
                         placeholder="repeatPassword"

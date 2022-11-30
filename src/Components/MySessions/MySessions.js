@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 
-import * as bookService from '../../services/bookService';
-import { useAuthContext } from '../../contexts/AuthContext';
+// import * as bookService from '../../services/bookService';
+// import { useAuthContext } from '../../contexts/AuthContext';
 
-import SessionList from '../SessionList/SessionList';
+// import SessionList from '../SessionList/SessionList';
 
 function MySessions() {
  
-    const [sessions, setSessions] = useState([]);
-    const { user } = useAuthContext();
+    // const [sessions, setSessions] = useState([]);
+    // const { user } = useAuthContext();
 
-    useEffect(() => {
-        bookService.getMyBooking(user._id)
-            .then(sessionsResult => {
-                setSessions(sessionsResult);
-            });
-    }, [sessions, setSessions, user._id])
+    // useEffect(() => {
+    //     bookService.getMyBooking(user._id)
+    //         .then(sessionsResult => {
+    //             setSessions(sessionsResult);
+    //         });
+    // }, [sessions, setSessions, user._id])
 
     return (
         <section href="/my-sessions" className="about section" id="my-sessions">
@@ -26,7 +26,7 @@ function MySessions() {
                         <h2 className="mb-4" data-aos="fade-up" data-aos-delay="300">Your Booked Sessions</h2>
 
                           
-                                <SessionList sessions={sessions} />
+                                {/* <SessionList sessions={sessions} /> */}
                        
 
                     </div>

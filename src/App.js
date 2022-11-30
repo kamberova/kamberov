@@ -61,9 +61,9 @@ function App() {
 
                 <Route path="/coaching" element={<Coaching />} />
 
-                <Route element={<GuardedRoute />}>
+                {/* <Route element={<GuardedRoute />}> */}
                   <Route path="/book-a-session" element={<BookASession />} />
-                </Route>
+                {/* </Route> */}
 
                 <Route path="/contacts" element={<Contacts />} />
 
