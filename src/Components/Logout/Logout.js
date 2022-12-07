@@ -2,29 +2,30 @@
 // import { auth } from '../../firebase-config'; // update path to your firestore config
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
+import { useEffect } from 'react';
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const Logout = () => {
 
+    const { user } = useAuthContext();
+
     const navigate = useNavigate();
 
-    // signOut(auth)
-    //     .then(() => {
-    //         navigate('/');
-
-    //         console.log('logged out');
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
-
     const auth = getAuth();
+    useEffect(() => {
+        signOut(auth).then(() => {
+            alert('Successfully logged out!')
+        }).catch((error) => {
+            console.log(error.message)
+        });
+        // navigate('/');
 
-    signOut(auth).then(() => {
-        alert('You have successfully logged out!');
-        navigate('/');
-    }).catch((error) => {
-        console.log(error.message)
-    });
+
+        if (!user) { 
+            navigate("/"); 
+        }
+    }, [auth, user, navigate]);
+
     return null;
 }
 // }

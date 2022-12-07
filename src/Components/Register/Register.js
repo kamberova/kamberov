@@ -22,12 +22,12 @@ function Register() {
 
         if (email === '' || password === '' || repeatPassword === '') {
             isValid = false
-            alert('All fields must be filled!');
+            setError('All fields must be filled!');
         };
 
         if (password !== repeatPassword) {
             isValid = false
-            alert('Passwords does not match!');
+            setError('Passwords does not match!');
         };
 
         return isValid
@@ -36,7 +36,6 @@ function Register() {
     const registerSubmitHandler = async (event) => {
         event.preventDefault();
 
-        setError('')
         if (validatePassword()) {
             // Create a new user with email and password using firebase
             createUserWithEmailAndPassword(auth, email, password)
@@ -48,7 +47,7 @@ function Register() {
                         password,
                         id: res.user.uid
                     };
-                    console.log(user.id)
+                    console.log(res.user)
                     navigate('/')
                 })
                 .catch(err => setError(err.message));

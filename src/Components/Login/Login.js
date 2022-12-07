@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React from "react";
 import { useState } from "react";
-// import { Alert } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import { auth } from '../../firebase-config';
 
 
@@ -12,6 +12,7 @@ function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
 
     const validatePassword = () => {
@@ -19,30 +20,29 @@ function Login() {
 
         if (email === '' || password === '') {
             isValid = false
-            alert('All fields must be filled');
+            setError('All fields must be filled!');
         };
 
-        return isValid;
+        return isValid
     };
 
     const onLoginHandler = async (event) => {
         event.preventDefault();
-
 
         if (validatePassword()) {
             // Create a new user with email and password using firebase
             signInWithEmailAndPassword(auth, email, password)
                 .then((res) => {
                     console.log(res.user)
-                    navigate('/');
+                    navigate("/");
                 })
-                .catch((error) => {
-                    console.log(error.message)
-                });
+                .catch(err => setError(err.message));
         }
+
         setEmail('')
         setPassword('')
-    };
+
+    }
 
     return (
 
@@ -50,9 +50,9 @@ function Login() {
 
             <div className="membership-form">
                 <p>Already have an acoount?</p>
-                {/* {error && <Alert variant="danger">{error}</Alert>} */}
+                {error && <Alert variant="danger">{error}</Alert>}
                 {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
-                <form onSubmit={onLoginHandler} method="POST" className="login-form webform" role="form">
+                <form onSubmit={onLoginHandler} method="POST" className="membership-form webform" role="form">
                     <label htmlFor="email">E-mail</label>
                     <input
                         type="email"
