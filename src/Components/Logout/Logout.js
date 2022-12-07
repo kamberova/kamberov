@@ -14,12 +14,11 @@ const Logout = () => {
     const auth = getAuth();
     useEffect(() => {
         signOut(auth).then(() => {
+            // localStorage.clear();
             alert('Successfully logged out!')
         }).catch((error) => {
             console.log(error.message)
         });
-        // navigate('/');
-
 
         if (!user) { 
             navigate("/"); 

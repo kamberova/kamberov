@@ -48,7 +48,7 @@ function Register() {
                         id: res.user.uid
                     };
                     console.log(res.user)
-                    navigate('/')
+                    navigate("/")
                 })
                 .catch(err => setError(err.message));
             return user;
