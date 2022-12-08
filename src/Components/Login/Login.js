@@ -7,7 +7,7 @@ import { auth } from '../../firebase-config';
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-function Login() {
+function Login({ setIsAuth }) {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
@@ -33,6 +33,9 @@ function Login() {
             // Create a new user with email and password using firebase
             signInWithEmailAndPassword(auth, email, password)
                 .then((res) => {
+                    // localStorage.setItem("isAuth", true);
+                    localStorage.setItem(res.user.email, res.user.uid);
+                    setIsAuth(true);
                     console.log(res.user)
                     navigate("/");
                 })

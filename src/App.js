@@ -30,18 +30,18 @@ import GuardedRoute from './Components/Common/GuardedRoute';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null);
+  const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
+      setIsAuth(user)
     })
   }, [])
 
   return (
     <ErrorBoundary>
       <NotificationProvider>
-        <AuthProvider value={currentUser}>
+        <AuthProvider value={setIsAuth}>
 
           <div id="container">
 
@@ -67,7 +67,7 @@ function App() {
 
                 <Route path="/contacts" element={<Contacts />} />
 
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
 
                 <Route path="/my-sessions" element={<PrivateRoute><MySessions /></PrivateRoute>} />
                 <Route path="/details/:bookingId" element={<PrivateRoute><Details /></PrivateRoute>} />
