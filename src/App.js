@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { React, useEffect, useState } from 'react';
 import { auth } from './firebase-config'
 // import { collection, getDocs } from 'firebase/firestore/lite';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { NotificationProvider } from './contexts/NotificationContext'
@@ -24,19 +25,23 @@ import Header from "./Components/Header/Header";
 import Notification from './Components/Common/Notification';
 import ErrorBoundary from './Components/Common/ErrorBoundary';
 import PrivateRoute from './Components/Common/PrivateRoute';
-import GuardedRoute from './Components/Common/GuardedRoute';
+// import GuardedRoute from './Components/Common/GuardedRoute';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
 
   const [isAuth, setIsAuth] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      if(user) {
+        navigate("/")
+      }
       setIsAuth(user)
     })
-  }, [])
+  }, [navigate])
 
   return (
     <ErrorBoundary>
