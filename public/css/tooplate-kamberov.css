@@ -170,8 +170,13 @@ strong {
   color: var(--white-color);
 }
 
+.book-a-session-button {
+  margin-top: 32px;
+}
 
-
+.row div h3 {
+  margin: 1px 0px 4px 0px;
+}
 /*---------------------------------------
      GENERAL               
   -----------------------------------------*/
@@ -190,7 +195,7 @@ strong {
 }
 
 a {
-  color: var(--link-color);
+  /* color: var(--link-color); */
   font-weight: normal;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -444,11 +449,25 @@ a:focus {
 /*---------------------------------------
      SCHEDULE             
   -----------------------------------------*/
+.calendar div{
+  margin: auto;
+}
+
+.custom-options select{
+  width: fit-content;
+  border-radius: 0%;
+}
+.padding {
+  padding-top: 8px;
+}
 
 .schedule {
   background: var(--dark-color);
 }
 
+.choose-session label {
+  margin-right: 6px;
+}
 ul li {
   list-style: none;
 }

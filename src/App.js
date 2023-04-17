@@ -34,14 +34,14 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if(user) {
-        navigate("/")
-      }
-      setIsAuth(user)
-    })
-  }, [navigate])
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if(user) {
+  //       navigate("/")
+  //     }
+  //     setIsAuth(user)
+  //   })
+  // }, [navigate])
 
   return (
     <ErrorBoundary>
@@ -68,6 +68,7 @@ function App() {
 
                 {/* <Route element={<GuardedRoute />}> */}
                   <Route path="/book-a-session" element={<BookASession />} />
+
                 {/* </Route> */}
 
                 <Route path="/contacts" element={<Contacts />} />
