@@ -37,7 +37,8 @@ function PositioningPage() {
                             <h2 className="text-center" data-aos="fade-up" data-aos-delay="200">Your body position says it all!</h2>
 
                             <div className="positioning">
-                                <p>Ankle</p>
+                               <h4 className="">Learn the best techniques and body positions with me!</h4>
+                               {/* <h4>and body positions with me!</h4> */}
                             </div>
 
                        

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import BookASessionButton from "../Layout/BookASessionButton";
 import SessionCard from "./SessionCard";
 
