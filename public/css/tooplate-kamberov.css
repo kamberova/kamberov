@@ -240,8 +240,10 @@ a:focus {
   padding: 1px;
 }
 
-.membership-form {
-  margin-top: 4rem;
+.membership-form, .membership-form p {
+  margin-top: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   color: var(--primary-color);
 }
 
@@ -623,19 +625,24 @@ button#submit-button:hover {
   background: var(--primary-color);
 }
 
-.contact h2+p {
-  max-width: 90%;
+/* .contact h2+p {
+  max-width: 100%;
+} */
+
+.contact-options div{
+  margin-bottom: 2rem;
 }
 
 .google-map {
   border-top: 1px solid #efebeb;
   margin-top: 3rem;
   padding-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .google-map iframe {
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
 }
 
 

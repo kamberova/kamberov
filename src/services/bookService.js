@@ -17,15 +17,18 @@ export const create = async (bookData, token) => {
             'content-type': 'application/json',
             'X-Authorization': token,
         },
-        body: JSON.stringify({...bookData, likes: []})
+        body: JSON.stringify({ ...bookData, likes: [] })
     });
 
-     console.log(response);
-     
+    console.log(response);
+
     let result = await response.json();
 
     return result;
 };
+// export const accessControl = request.use((req, res) => {
+//     res.set({ "Access-Control-Allow-Origin": "*" });
+// });
 
 export const update = (bookingId, bookData) => request.put(`${baseUrl}/book-a-session/${bookingId}`, bookData);
 

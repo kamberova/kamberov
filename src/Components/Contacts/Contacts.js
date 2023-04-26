@@ -6,26 +6,26 @@ function Contacts() {
 
     <section href="/contacts" className="contact section" id="contact">
       <div className="container">
-        <div className="row">
+        <div className="row text-center">
 
-          <div className="ml-auto col-lg-5 col-md-6 col-12">
+          <div className="ml-auto col-lg-5 col-md-6 col-12 contact-options">
             <h2 className="mb-4 pb-2" data-aos="fade-up" data-aos-delay="50">Feel free to contact me</h2>
 
-            <div className="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12" data-aos="fade-up" data-aos-delay="100">
-              <p className="mr-4">
+            <div className="d-flex justify-content-center mx-auto col-md-7 col-12" data-aos="fade-up" data-aos-delay="100">
+              <p className="">
                 <i className="fa fa-envelope-o mr-1"></i>
                 <a href="/contacts">kambera@abv.bg</a>
               </p>
             </div>
 
 
-            <div className="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12" data-aos="fade-up" data-aos-delay="100">
+            <div className="d-flex justify-content-center mx-auto  col-md-7" data-aos="fade-up" data-aos-delay="100">
               <p><i className="fa fa-phone mr-1"></i>
                 <a href="/contacts">+359 888 92 16 92</a>
               </p>
             </div>
 
-            <div className="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12" data-aos="fade-up" data-aos-delay="100">
+            <div className="d-flex justify-content-center mx-auto col-md-7" data-aos="fade-up" data-aos-delay="100">
               <p><i className="fa fa-facebook mr-1"></i>
                 <a href="https://www.facebook.com/kamberov">Facebook page</a>
               </p>
@@ -33,8 +33,8 @@ function Contacts() {
 
           </div>
 
-          <div className="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-            <h2 className="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can find me</h2>
+          <div className="mx-auto mt-lg-0 mt-md-0 col-lg-5 col-md-6">
+            <h2 className="" data-aos="fade-up" data-aos-delay="600">Where you can find me</h2>
 
             <p data-aos="fade-up" data-aos-delay="800"><i className="fa fa-map-marker mr-1"></i> 2, Stockholm Rd, London SE16 3LP, UK</p>
 
