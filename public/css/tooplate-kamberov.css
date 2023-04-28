@@ -177,6 +177,7 @@ strong {
 .row div h3 {
   margin: 1px 0px 4px 0px;
 }
+
 /*---------------------------------------
      GENERAL               
   -----------------------------------------*/
@@ -240,7 +241,8 @@ a:focus {
   padding: 1px;
 }
 
-.membership-form, .membership-form p {
+.membership-form,
+.membership-form p {
   margin-top: 5rem;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -445,20 +447,21 @@ a:focus {
   background-repeat: no-repeat;
   min-height: 77vh;
   position: relative;
-  
+
 }
 
 /*---------------------------------------
      SCHEDULE             
   -----------------------------------------*/
-.calendar div{
+.calendar div {
   margin: auto;
 }
 
-.custom-options select{
+.custom-options select {
   width: fit-content;
   border-radius: 0%;
 }
+
 .padding {
   padding-top: 8px;
 }
@@ -470,6 +473,7 @@ a:focus {
 .choose-session label {
   margin-right: 6px;
 }
+
 ul li {
   list-style: none;
 }
@@ -553,6 +557,13 @@ td {
   background: var(--about-bg-color);
 }
 
+.about-section {
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  padding: 20px;
+}
 .about-working-hours {
   border-left: 2px solid;
   padding-left: 3.5rem;
@@ -629,7 +640,7 @@ button#submit-button:hover {
   max-width: 100%;
 } */
 
-.contact-options div{
+.contact-options div {
   margin-bottom: 2rem;
 }
 
@@ -651,7 +662,7 @@ button#submit-button:hover {
   -----------------------------------------*/
 
 .site-footer {
-  border-top: 3px solid rgba(176,167,255,0.25);
+  border-top: 3px solid rgba(176, 167, 255, 0.25);
   padding: 1rem 0;
 }
 
@@ -729,6 +740,18 @@ button#submit-button:hover {
 
   .modal-content {
     padding: 2rem;
+  }
+
+  .video video{
+    background: var(--about-bg-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
   }
 }
 

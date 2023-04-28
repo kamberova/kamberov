@@ -1,31 +1,32 @@
 import { Fragment } from "react";
 import React from 'react';
-import BookASessionButton from "../Layout/BookASessionButton";
+// import BookASessionButton from "../Layout/BookASessionButton";
 
 function About() {
 
     return (
         <Fragment>
-            <section href="/about" className="about section" id="about">
+            <section href="/about" className="hero d-flex flex-column justify-content-end" id="about">
                 <div className="container">
                     <div className="row">
+                        <video className="bg-overlay" controls playsinline loop autoPlay muted>
+                            <source src="/images/kamberov.mp4" type="video/mp4" />
+                        </video>
 
                         <div className="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
                             <h2 className="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, I am Radoslav Kamberov</h2>
 
-                            <p data-aos="fade-up" data-aos-delay="400">I am a sertified personal trainer, kids trainer, sparing partner. I manage also table-tennis team buildings and showcases on firm/company requests.</p>
-
-
+                            <p data-aos="fade-up" data-aos-delay="400" className="text-white">I am a sertified personal trainer, kids trainer, sparing partner. I manage also table-tennis team buildings and showcases on firm/company requests.</p>
                         </div>
 
                         <div className="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
                             <div className="team-thumb">
-                                <img src="/images/team/trainer.jpg" className="img-fluid" alt="Trainer" />
+                                {/* <img src="/images/team/trainer.jpg" className="img-fluid" alt="Trainer" /> */}
 
                                 <div className="team-info d-flex flex-column">
 
                                     <h3>Radoslav Kamberov</h3>
-                                    <span>Sertified Table Tennis Coach</span>
+                                    <span>I am a sertified personal trainer, kids trainer, sparing partner. I manage also table-tennis team buildings and showcases on firm/company requests.</span>
 
                                     <ul className="social-icon mt-3">
 
@@ -42,8 +43,8 @@ function About() {
             </section>
 
 
-            <BookASessionButton />
-            
+            {/* <BookASessionButton /> */}
+
         </Fragment>
     )
 }

@@ -5,7 +5,6 @@ import { auth } from './firebase-config'
 // import { collection, getDocs } from 'firebase/firestore/lite';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-// import { CorsOptions } from "cors";
 
 import { AuthProvider } from './contexts/AuthContext';
 import { NotificationProvider } from './contexts/NotificationContext'
@@ -34,13 +33,6 @@ function App() {
 
   const [isAuth, setIsAuth] = useState(false);
   const navigate = useNavigate();
-
-  // const cors = require("cors");
-  // var corsOptions = {
-  //   origin: "http://localhost:3000"
-  // };
-  
-  // cors(corsOptions);
 
   
   // useEffect(() => {
