@@ -663,7 +663,7 @@ button#submit-button:hover {
 
 .site-footer {
   border-top: 3px solid rgba(176, 167, 255, 0.25);
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
 }
 
 .site-footer a {
