@@ -459,6 +459,7 @@ a:focus {
   width: 50%;
   vertical-align: center;
 }
+
 /* .buttons-ul-wrapper ul{ */
 /* display: inline-flex;
   display: flex;
@@ -495,14 +496,16 @@ a:focus {
 }
 
 .change {
-  display: none;
+  border-bottom: 2px solid black;
 }
-.positions-button:hover + .change {
+
+/* .positions-button:hover + .change {
   display: block;
-  color: blue;
   width: 300px;
   height: 100px;
-}
+  border-bottom: 2px solid black;
+} */
+
 
 .positioning-grid {
   display: flex;
