@@ -440,14 +440,73 @@ a:focus {
      POSITIONING PAGE           
   -----------------------------------------*/
 
-.positioning {
+.positioning-img {
   background-image: url('../images/class/body-positioning.jpg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 77vh;
   position: relative;
+  width: 50%;
+}
 
+.buttons-div-wrapper {
+  width: 50%;
+}
+
+.show-info {
+  text-align: center;
+  width: 50%;
+  vertical-align: center;
+}
+/* .buttons-ul-wrapper ul{ */
+/* display: inline-flex;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 2px 0; */
+/* } */
+
+/* .buttons-ul-wrapper ul li { */
+/* width: 100px;
+  text-align: center; */
+/* } */
+
+.buttons-ul-wrapper li button {
+  /* display: inline-flex; */
+  /* vertical-align: auto; */
+  display: inline;
+  margin: 10px 0;
+  line-height: 30px;
+  width: 90px;
+  background: var(--primary-color);
+  border-color: transparent;
+  color: var(--white-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.positions-button:hover {
+  /* margin-top: -10px; */
+  top: 2rem;
+  right: 2rem;
+  line-height: 3rem;
+  border-bottom: 2px solid black;
+}
+
+.change {
+  display: none;
+}
+.positions-button:hover + .change {
+  display: block;
+  color: blue;
+  width: 300px;
+  height: 100px;
+}
+
+.positioning-grid {
+  display: flex;
+  align-items: left;
 }
 
 /*---------------------------------------
@@ -564,6 +623,7 @@ td {
   width: 100%;
   padding: 20px;
 }
+
 .about-working-hours {
   border-left: 2px solid;
   padding-left: 3.5rem;
@@ -742,7 +802,7 @@ button#submit-button:hover {
     padding: 2rem;
   }
 
-  .video video{
+  .video video {
     background: var(--about-bg-color);
     position: absolute;
     top: 0;
