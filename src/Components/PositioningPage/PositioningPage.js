@@ -146,7 +146,7 @@ function PositioningPage() {
                                 </li>
                                 <li> <button onClick={displayInfo} className="positions-button">Shoulders</button>
                                     <div>
-                                        <p style={{ display: 'none' }} id="shoulders"  >With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text. But it can do more! </p>
+                                        <p style={{ display: 'none' }} className="change" id="shoulders"  >With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text. But it can do more! </p>
                                     </div>
                                 </li>
                                 <li> <button onClick={displayInfo} className="positions-button">Elbows</button>

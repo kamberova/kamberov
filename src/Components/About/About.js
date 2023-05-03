@@ -13,20 +13,13 @@ function About() {
                             <source src="/images/kamberov.mp4" type="video/mp4" />
                         </video>
 
-                        <div className="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                            <h2 className="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, I am Radoslav Kamberov</h2>
-
-                            <p data-aos="fade-up" data-aos-delay="400" className="text-white">I am a sertified personal trainer, kids trainer, sparing partner. I manage also table-tennis team buildings and showcases on firm/company requests.</p>
-                        </div>
-
-                        <div className="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                        <div className="ml-lg-auto col-md-6" data-aos="fade-up" data-aos-delay="100">
                             <div className="team-thumb">
-                                {/* <img src="/images/team/trainer.jpg" className="img-fluid" alt="Trainer" /> */}
-
                                 <div className="team-info d-flex flex-column">
 
                                     <h3>Radoslav Kamberov</h3>
-                                    <span>I am a sertified personal trainer, kids trainer, sparing partner. I manage also table-tennis team buildings and showcases on firm/company requests.</span>
+                                    <span>Sertified personal trainer, kids trainer, sparing partner.</span>
+                                    <span>I manage also table-tennis team buildings and showcases on firm/company requests.</span>
 
                                     <ul className="social-icon mt-3">
 
@@ -34,6 +27,30 @@ function About() {
                                         <li><a href="https://www.facebook.com/kamberov" className="fa fa-facebook"></a></li>
                                         {/* <li><a href="#" className="fa fa-twitter"></a></li>
                                     <li><a href="#" className="fa fa-instagram"></a></li> */}
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="ml-lg-auto col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div className="team-thumb">
+                                <div className="team-info d-flex flex-column">
+
+                                    <h3>Professional experience</h3>
+
+                                    <span className="experience">3th place single London GP,Jersey GP</span>
+                                    <span className="experience">Mens Double winner London GP</span>
+                                    <span className="experience">Bulgarian champion</span>
+                                    <span className="experience">Bulgarian double champion</span>
+                                    <span className="experience">Bronze medal Balkan games</span>
+                                    <span className="experience">Runner up International table tennis Festival Albena</span>
+                                    <span className="experience">Former player Ochsenhausen(Germany),Cestas(France)</span>
+                                    <ul className="social-icon mt-3">
+                                        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+                                        <li><a href="https://www.facebook.com/kamberov" className="fa fa-facebook"></a></li>
+                                        {/* <li><a href="#" className="fa fa-twitter"></a></li>
+<li><a href="#" className="fa fa-instagram"></a></li> */}
                                     </ul>
                                 </div>
                             </div>
