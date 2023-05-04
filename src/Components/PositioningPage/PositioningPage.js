@@ -41,7 +41,7 @@ function PositioningPage() {
         } else {
             shoudldersBtn.style.display = "none";
         }
-        
+
         if (clickedBtn === "Elbows") {
             if (elbowsBtn.style.display == "none") {
                 elbowsBtn.style.display = "block";
@@ -96,7 +96,7 @@ function PositioningPage() {
         } else {
             pelvisBtn.style.display = "none";
         }
-        
+
         if (clickedBtn === "Knees") {
             if (kneesBtn.style.display == "none") {
                 kneesBtn.style.display = "block";
@@ -108,7 +108,7 @@ function PositioningPage() {
             kneesBtn.style.display = "none";
         }
 
-        
+
         if (clickedBtn === "Ankles") {
             if (anklesBtn.style.display == "none") {
                 anklesBtn.style.display = "block";
@@ -119,7 +119,7 @@ function PositioningPage() {
         } else {
             anklesBtn.style.display = "none";
         }
-           
+
     }
 
 
@@ -132,7 +132,9 @@ function PositioningPage() {
 
                 <div className="" data-aos="fade-up" data-aos-delay="200">
 
-                    <h2 className="text-center" data-aos="fade-up" data-aos-delay="200">Your body position says it all!</h2>
+                    {/* <h2 className="text-center" data-aos="fade-up" data-aos-delay="200">Your body position says it all!</h2> */}
+                    <h2 className="text-center" data-aos="fade-up" data-aos-delay="200">Your stance says it all!</h2>
+
 
                     <div className="positioning-grid">
 
@@ -164,24 +166,24 @@ function PositioningPage() {
                                         <p style={{ display: 'none' }} className="change" id="fingers" >With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text. But it can do more! </p>
                                     </div>
                                 </li>
-                                <li> <button onClick={displayInfo} className="positions-button">Pelvis</button>
-                                    <div >
-                                        <p style={{ display: 'none' }} className="change" id="pelvis" >With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text. But it can do more! </p>
-                                    </div>
-                                </li>
                                 <li> <button onClick={displayInfo} className="positions-button">Abs</button>
                                     <div >
-                                        <p style={{ display: 'none' }} className="change" id="abs" >With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text. But it can do more! </p>
+                                        <p style={{ display: 'none' }} className="change" id="abs" > </p>
+                                    </div>
+                                </li>
+                                <li> <button onClick={displayInfo} className="positions-button">Pelvis</button>
+                                    <div >
+                                        <p style={{ display: 'none' }} className="change" id="pelvis" >The lower trunk (pelvis) plays very specific role for having a precise hit. The right body rotating contributes to earlier firing activation of the upper trapezius for higher efficiency at ball impact and also increases the overall muscle activity.</p>
                                     </div>
                                 </li>
                                 <li> <button onClick={displayInfo} className="positions-button">Knees</button>
                                     <div >
-                                        <p style={{ display: 'none' }} className="change" id="knees" >With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text. But it can do more! </p>
+                                        <p style={{ display: 'none' }} className="change" id="knees" >Playing table tennis means you need to have lower body explosive power strength and your knees are key factor in it. Keeping your knees bent in position that your eyes meet the net level, makes sure you have the best perspective of the ball.</p>
                                     </div>
                                 </li>
                                 <li> <button onClick={displayInfo} className="positions-button">Ankles</button>
                                     <div >
-                                        <p style={{ display: 'none' }} className="change" id="ankles" >With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text. But it can do more! </p>
+                                        <p style={{ display: 'none' }} className="change" id="ankles">The right ankles position is very important for the reaction speed time and pushing all other body muscles for their best efficiency.</p>
                                     </div>
                                 </li>
                             </ul>
