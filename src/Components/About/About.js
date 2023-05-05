@@ -2,17 +2,22 @@ import { Fragment } from "react";
 import React from 'react';
 // import BookASessionButton from "../Layout/BookASessionButton";
 
+
 function About() {
+
+    // let trophy = `<i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11"}}></i>`;
 
     return (
         <Fragment>
-            <section href="/about" className="hero d-flex flex-column justify-content-end" id="about">
+            <section href="/about" className="about-section d-flex flex-column justify-content-end" id="about">
                 <div className="container">
                     <div className="row">
-                        <video className="bg-overlay" controls playsinline loop autoPlay muted>
-                            <source src="/images/kamberov.mp4" type="video/mp4" />
-                        </video>
 
+                        <div className="video-wrapper">
+                            <video className="about-video" controls playsInline loop autoPlay muted>
+                                <source src="/images/kamberov.mp4" type="video/mp4" />
+                            </video>
+                        </div>
                         <div className="ml-lg-auto col-md-6" data-aos="fade-up" data-aos-delay="100">
                             <div className="team-thumb">
                                 <div className="team-info d-flex flex-column">
@@ -37,18 +42,23 @@ function About() {
                             <div className="team-thumb">
                                 <div className="team-info d-flex flex-column">
 
-                                    <h3>Professional experience</h3>
+                                    <div>
+                                        <h3>Professional experience</h3>
 
-                                    <span className="experience">3th place single London GP,Jersey GP</span>
-                                    <span className="experience">Mens Double winner London GP</span>
-                                    <span className="experience">Bulgarian champion</span>
-                                    <span className="experience">Bulgarian double champion</span>
-                                    <span className="experience">Bronze medal Balkan games</span>
-                                    <span className="experience">Runner up International table tennis Festival Albena</span>
-                                    <span className="experience">Former player Ochsenhausen(Germany),Cestas(France)</span>
+                                        <span className="experience"> <i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11" }}></i>3d place single London GP,Jersey GP</span>
+                                        <span className="experience"> <i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11" }}></i>Mens Double winner London GP</span>
+                                        <span className="experience"> <i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11" }}></i>Bulgarian national champion</span>
+                                        <span className="experience"> <i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11" }}></i>Bulgarian double champion</span>
+                                        <span className="experience"> <i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11" }}></i>Bronze medal Balkan games</span>
+                                        <span className="experience"> <i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11" }}></i>Runner up International table tennis Festival Albena</span>
+                                        <span className="experience"> <i class="fa fa-trophy" style={{ "font-size": "14px", color: "#f13a11" }}></i>Former player Ochsenhausen(Germany), Cestas(France)</span>
+                                    </div>
+
                                     <ul className="social-icon mt-3">
+
                                         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
                                         <li><a href="https://www.facebook.com/kamberov" className="fa fa-facebook"></a></li>
+
                                         {/* <li><a href="#" className="fa fa-twitter"></a></li>
 <li><a href="#" className="fa fa-instagram"></a></li> */}
                                     </ul>
@@ -62,7 +72,7 @@ function About() {
 
             {/* <BookASessionButton /> */}
 
-        </Fragment>
+        </Fragment >
     )
 }
 

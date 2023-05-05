@@ -389,12 +389,13 @@ a:focus {
 }
 
 .about-section {
-  background-image: url('../images/white.jpg');
-  background-size: cover;
+  /* background-image: url('../images/white.jpg'); */
+  /* background-size: cover;
   background-position: top;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  margin-top: 3.5rem;
   vertical-align: middle;
-  min-height: 87vh;
+  min-height: 78vh;
   position: relative;
 }
 
@@ -464,7 +465,7 @@ a:focus {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 77vh;
+  min-height: 50vh;
   position: relative;
   width: 50%;
 }
@@ -497,7 +498,7 @@ a:focus {
   /* vertical-align: auto; */
   display: inline;
   margin: 10px 0;
-  line-height: 30px;
+  line-height: 26px;
   width: 90px;
   background: var(--primary-color);
   border-color: transparent;
@@ -638,13 +639,13 @@ td {
   background: var(--about-bg-color);
 }
 
-.about-section {
-  position: fixed;
-  bottom: 0;
+/* .about-section { */
+/* position: fixed; */
+/* bottom: 0;
 
   width: 100%;
-  padding: 20px;
-}
+  padding: 20px; */
+/* } */
 
 .about-working-hours {
   border-left: 2px solid;
@@ -667,12 +668,16 @@ td {
   box-shadow: 6px 0 38px rgba(20, 20, 20, 0.10);
   padding: 10px;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
+  margin-left: 65px;
+  width: 75%;
+  max-height: 75%;
+  font-size: 14px;
 }
 
 .team-info span {
   font-weight: var(--font-weight-light);
-  opacity: 0.85;
+  /* opacity: 0.85; */
 }
 
 .team-info .social-icon {
@@ -685,6 +690,23 @@ td {
   display: block;
 }
 
+.experience {
+  display: inline-flex;
+  padding-bottom: 10px;
+
+  align-items: stretch;
+  line-height: 0.1;
+}
+div i.fa{
+  margin-bottom: 0;
+}
+
+.experience i {
+  padding-right: 6px;
+  /* margin-bottom: 0; */
+  line-height: 0.1px;
+  /* text-align: center; */
+}
 
 /*---------------------------------------
      CONTACT              
