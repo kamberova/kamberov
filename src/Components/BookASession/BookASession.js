@@ -50,7 +50,7 @@ function BookASession() {
 
 
 
-                    <div className="col-lg-12 py-5 col-md-12 col-12" data-aos="fade-up">
+                    <div className="col-lg-12 col-md-12 col-12" data-aos="fade-up">
                         <div className="">
                             <ShowCalendar />
                             {/* <i className=" fa fa-calendar" data-aos="fade-up" data-aos-delay="200"></i> */}
@@ -58,13 +58,23 @@ function BookASession() {
                         <div className="col-lg-12 col-12 text-center padding">
                             <section id="create-session" className="create padding">
                                 <div className="choose-session padding custom-options">
-                                    <label htmlFor="formsel" className="text-white padding">Choose your session:</label>
+                                    <label htmlFor="formsel" className="text-white padding">Choose session type:</label>
                                     <select id="formsel" className="react-calendar padding text-center">
                                         <option value="personal">Personal training</option>
                                         <option value="team">Team Building</option>
                                         <option value="showcase">Showcase</option>
                                     </select>
+                                </div>
 
+                                <div className="choose-session padding custom-options">
+                                    <label htmlFor="formsel" className="text-white padding">Preffered hour:</label>
+                                    <select id="formsel" className="react-calendar padding text-center">
+                                        <option value="10-11">10-11AM</option>
+                                        <option value="11-12">11-12AM</option>
+                                        <option value="14-15">14-15PM</option>
+                                        <option value="15-16">15-16PM</option>
+                                        <option value="16-17">16-17PM</option>
+                                    </select>
                                 </div>
 
                                 <form id="create-form" onClick={onBookTraining} method="POST">

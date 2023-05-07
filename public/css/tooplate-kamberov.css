@@ -126,6 +126,9 @@ strong {
   padding: 6rem 0 0 0;
 }
 
+.contact-section {
+  padding: 10rem 0 4rem 0;
+}
 
 /* BUTTON */
 
@@ -171,7 +174,8 @@ strong {
 }
 
 .book-a-session-button {
-  margin-top: 32px;
+  margin-top: 22px;
+  margin-bottom: 4px;
 }
 
 .row div h3 {
@@ -544,6 +548,10 @@ a:focus {
   border-radius: 0%;
 }
 
+option:active{
+  color: var(--primary-color);
+}
+
 .padding {
   padding-top: 8px;
 }
@@ -751,7 +759,7 @@ button#submit-button:hover {
 }
 
 .google-map {
-  border-top: 1px solid #efebeb;
+  border-top: 2px solid rgba(176, 167, 255, 0.25);
   margin-top: 3rem;
   padding-top: 3rem;
   margin-bottom: 3rem;
