@@ -1,18 +1,38 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useAuthContext } from "../../contexts/AuthContext";
 import BookNowButton from "../Layout/BookNowButton";
 // import * as bookService from '../../services/bookService';
 // import ShowCalendar from "../Calendar/Calendar";
 import Calendar from 'react-calendar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './BookASession.css';
+import { db } from "../../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 
 
 function BookASession() {
     // const { user } = useAuthContext();
-    // const navigate = useNavigate();
-    const [date, setDate] = useState(new Date())
+    const navigate = useNavigate();
+    const [date, setDate] = useState(new Date());
+    const [type, setType] = useState("");
+    console.log(type);
+
+    const SessionsRef = collection(db, "sessions");
+    const [sessions, setSessions] = useState([]);
+    console.log(sessions);
+
+    useEffect(() => {
+        const getSession = async () => {
+            const data = await getDocs(SessionsRef);
+            setSessions(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        }
+        getSession();
+
+
+    }, [SessionsRef]);
+
+
     const weekDays = {
         0: "Sunday",
         1: "Monday",
@@ -41,37 +61,62 @@ function BookASession() {
     let day = date.getDay();
     let month = date.getMonth();
     let year = date.getFullYear();
-    let currDate = date.getDate();
-    let currDay = weekDays[day];
-    let currMonth = months[month];
+    let selectedDate = date.getDate();
+    let selectedDay = weekDays[day];
+    let selectedMonth = months[month];
 
-    console.log(year, currDate, currDay, currMonth);
-    // console.log(year);
+
+    console.log(year, selectedDate, selectedDay, selectedMonth);
+
 
     let onBookTraining = (event) => {
         event.preventDefault();
 
-        // let formData = new FormData(event.currentTarget.value);
+        let selectedType = document.getElementById('type');
+        let type = selectedType.options[selectedType.selectedIndex].text;
+        let select = document.getElementById('hour');
+        let hour = select.options[select.selectedIndex].text;
 
-        // let type = formData.get('type');
+        console.log(type);
+        console.log(hour);
 
-        // console.log(calendar.currDate);
+
+
+        // const usersCollectionRef = collection(db, 'users')
+
+        // const addSession = async () => {
+        //     const document = await addDoc(usersCollectionRef, {
+        //         type,
+        //         selectedDate,
+        //         selectedDay,
+        //         selectedMonth,
+        //         year,
+        //         hour
+        //     })
+
+        //     const newCollectionRef = collection(db, 'users', document.id, 'mySession')
+
+        //     await addDoc(newCollectionRef, {
+        //         data: 'Hello there World',
+        //     })
+        // }
 
         // bookService.create({
         //     type,
-        //     // currDate,
-        //     // currDay,
-        //     // currMonth,
-        //     // year
+        //     selectedDate,
+        //     currDay,
+        //     currMonth,
+        //     year,
+        //     hour
         // }, user.accessToken)
 
         //     .then(result => {
         //         console.log(result);
 
-        //         navigate('/my-sessions');
         //     });
 
 
+        navigate('/my-sessions');
 
 
     };
@@ -108,21 +153,21 @@ function BookASession() {
                             <section id="create-session" className="create padding">
                                 <div className="choose-session padding custom-options">
                                     <label htmlFor="formsel" className="text-white padding">Choose session type:</label>
-                                    <select id="formsel" className="react-calendar padding text-center">
-                                        <option value="personal">Personal training</option>
-                                        <option value="team">Team Building</option>
-                                        <option value="showcase">Showcase</option>
+                                    <select id="type" className="react-calendar padding text-center">
+                                        <option onClick={(event) => setType(event.target.value)} id="personal" value="personal">Personal training</option>
+                                        <option onClick={onBookTraining} id="team" value="team">Team Building</option>
+                                        <option onClick={onBookTraining} id="showcase" value="showcase">Showcase</option>
                                     </select>
                                 </div>
 
                                 <div className="choose-session padding custom-options">
                                     <label htmlFor="formsel" className="text-white padding">Preffered hour:</label>
-                                    <select id="formsel" className="react-calendar padding text-center">
-                                        <option value="10-11">10-11AM</option>
-                                        <option value="11-12">11-12AM</option>
-                                        <option value="14-15">14-15PM</option>
-                                        <option value="15-16">15-16PM</option>
-                                        <option value="16-17">16-17PM</option>
+                                    <select id="hour" className="react-calendar padding text-center">
+                                        <option onClick={onBookTraining} value="10-11">10-11AM</option>
+                                        <option onClick={onBookTraining} value="11-12">11-12AM</option>
+                                        <option onClick={onBookTraining} value="14-15">14-15PM</option>
+                                        <option onClick={onBookTraining} value="15-16">15-16PM</option>
+                                        <option onClick={onBookTraining} value="16-17">16-17PM</option>
                                     </select>
                                 </div>
 
@@ -132,7 +177,7 @@ function BookASession() {
                                             id="name"
                                             name="type"
                                             value="type"
-                                        //    onClick={(e) => setType(e.target.value)}
+                                            onClick={(e) => setType(e.target.value)}
                                         >
                                         </strong>
                                     </div>

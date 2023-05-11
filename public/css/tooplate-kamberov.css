@@ -247,7 +247,7 @@ a:focus {
 
 .membership-form,
 .membership-form p {
-  margin-top: 5rem;
+  margin-top: 6.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
   color: var(--primary-color);
@@ -368,6 +368,15 @@ a:focus {
   top: 8px;
 }
 
+.nav-logo{
+  width: 10%;
+}
+
+.username{
+  color: #007bff;
+  margin-left: 1rem;
+  margin-right: 3rem;
+}
 /*---------------------------------------
      HERO              
   -----------------------------------------*/

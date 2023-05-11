@@ -49,8 +49,11 @@ function Header() {
   );
 
   let userNavigation = (
+
+
+
     <div id="user">
-      <span className="text-white">Welcome, {user ? userName : ''}</span>
+
       <ul className="navbar-nav ml-lg-auto">
 
         <li className="nav-item">
@@ -91,6 +94,8 @@ function Header() {
 
       <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container">
+          <img src="/images/logo.jpg" className="nav-logo" alt="Class" />
+          <span className="username">{user ? 'Welcome, ' + userName : ''}</span>
 
           <a className="navbar-brand" href="/">Home</a>
 

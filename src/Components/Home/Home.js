@@ -50,6 +50,7 @@ function Home() {
     return (
 
         <div>
+
             <section className="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
                 <div className="bg-overlay"></div>
