@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-const SessionCard = (
-    bookSession ) => {
-    return (
-        <li className="">
-            <p>Type: {bookSession.type}</p>
-            <Link className="button" to={`/details/${bookSession._id}`}>Details</Link>
-        </li>
-    );
-}
+// const SessionCard = (
+//     getMySessions ) => {
+//     return (
+//         <li className="">
+//             {/* <p>Type: {getMySessions.type}</p> */}
+//             <Link className="button" to={`/details/${getMySessions._id}`}>Details</Link>
+//         </li>
+//     );
+// }
 
-export default SessionCard;
+// export default SessionCard;

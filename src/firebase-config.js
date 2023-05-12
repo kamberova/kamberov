@@ -48,3 +48,4 @@ export const db = getFirestore(app);
 // connectAuthEmulator(auth, "http://localhost:3000");
 
 export default app;
+
