@@ -370,6 +370,7 @@ a:focus {
 
 .nav-logo{
   width: 10%;
+  border: 1.5px solid #f13a11;
 }
 
 .username{

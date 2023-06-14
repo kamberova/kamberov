@@ -40,16 +40,16 @@ function MySessions() {
                 <div className="row">
 
                     <div className="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                        <h2 className="mb-4" data-aos="fade-up" data-aos-delay="300">Your Booked Sessions</h2>
+                        <h2 className="mb-4">Your Booked Sessions</h2>
 
 
                         {/* <SessionList sessions={sessions} /> */}
 
                         {sessions.length > 0
                             ? (
-                                <ul className="data-aos=fade-up data-aos-delay=400">
+                                <ul >
                                     {sessions.map(session => (
-                                        <li key={session.id}>{session.data.type}</li>
+                                        <li className="team-info" key={session.id}><strong>{session.data.type}</strong> booked for {session.data.year} {session.data.selectedMonth} {session.data.selectedDate} - {session.data.selectedDay} at {session.data.hour}</li>
                                     ))}
                                 </ul>
                             )
