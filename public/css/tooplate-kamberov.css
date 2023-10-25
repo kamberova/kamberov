@@ -551,6 +551,7 @@ a:focus {
   -----------------------------------------*/
 .calendar div {
   margin: auto;
+  height: 90%;
 }
 
 .custom-options select {
