@@ -61,7 +61,7 @@ function Home() {
                         <div className="col-lg-8 col-md-10 mx-auto col-12">
                             <div className="hero-text mt-5 text-center">
 
-                                <h1 className="text-white">Upgrade your table tennis skills with me!</h1>
+                                <h1 className="text-white">Upgrade your table tennis skills with Radoslav!</h1>
 
                                 <a href="/positioning-page" className="text-primary-color">Learn how to improve your body position!</a>
 
