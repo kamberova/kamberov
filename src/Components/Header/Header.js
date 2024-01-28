@@ -34,14 +34,14 @@ function Header() {
         <li className="nav-item">
           <a href="/contacts" className="nav-link smoothScroll">Contacts</a>
         </li>
-
+{/* 
         <li className="nav-item">
           <a href="/login" className="nav-link smoothScroll">Login</a>
-        </li>
-
+        </li> */}
+{/* 
         <li className="nav-item">
           <a href="/register" className="nav-link smoothScroll">Register</a>
-        </li>
+        </li> */}
 
       </ul>
 
@@ -64,13 +64,13 @@ function Header() {
           <a href="/positioning-page" className="nav-link smoothScroll">Body Position</a>
         </li>
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a href="/book-a-session" className="nav-link smoothScroll">Book a session</a>
-        </li>
+        </li> */}
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a href="/my-sessions" className="nav-link smoothScroll">My Sessions</a>
-        </li>
+        </li> */}
 
         <li className="nav-item">
           <a href="/about" className="nav-link smoothScroll">About Me</a>
@@ -80,9 +80,9 @@ function Header() {
           <a href="/contacts" className="nav-link smoothScroll">Contacts</a>
         </li>
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a href="/logout" className="nav-link smoothScroll">Logout</a>
-        </li>
+        </li> */}
 
       </ul>
     </div>

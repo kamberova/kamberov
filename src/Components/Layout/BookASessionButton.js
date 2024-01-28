@@ -1,13 +1,13 @@
-import './BookASessionButton.css';
+// import './BookASessionButton.css';
 
-function BookASessionButton() {
+// function BookASessionButton() {
 
-    return (
-        <div className="text-center">
-            <a href="/book-a-session" className="text-primary-color">Book a session</a>
-        </div>
-    );
+//     return (
+//         <div className="text-center">
+//             <a href="/book-a-session" className="text-primary-color">Book a session</a>
+//         </div>
+//     );
 
-};
+// };
 
-export default BookASessionButton;
+// export default BookASessionButton;

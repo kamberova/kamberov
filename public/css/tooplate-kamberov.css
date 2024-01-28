@@ -393,7 +393,7 @@ a:focus {
 }
 
 .about-video {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -682,13 +682,12 @@ td {
 
 .team-info {
   background: var(--white-color);
-  border-radius: 0 0 2px 2px;
+  border-radius: 3% 3% 2px 2px;
   border: 2px solid var(--primary-color);
   box-shadow: 6px 0 38px rgba(20, 20, 20, 0.10);
-  padding: 10px;
+  padding: 5px;
   position: relative;
-  margin-bottom: 28px;
-  margin-left: 65px;
+  margin-left: 68px;
   width: 75%;
   max-height: 75%;
   font-size: 14px;
@@ -721,10 +720,24 @@ div i.fa{
 }
 
 .experience i {
+  position: ;
   padding-right: 6px;
   /* margin-bottom: 0; */
   line-height: 0.1px;
   /* text-align: center; */
+}
+
+.about-button {
+  margin-top: 27%;
+  background-color: transparent;
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  border: none;
+}
+
+.about-button:hover {
+  text-underline-offset: var(--dark-color);
 }
 
 /*---------------------------------------

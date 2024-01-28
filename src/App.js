@@ -68,21 +68,21 @@ function App() {
                 <Route path="/coaching" element={<Coaching />} />
 
                 {/* <Route element={<GuardedRoute />}> */}
-                  <Route path="/book-a-session" element={<BookASession />} />
+                  {/* <Route path="/book-a-session" element={<BookASession />} /> */}
 
                 {/* </Route> */}
 
                 <Route path="/contacts" element={<Contacts />} />
 
-                <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
+                {/* <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} /> */}
 
-                <Route path="/my-sessions" element={<PrivateRoute><MySessions /></PrivateRoute>} />
-                <Route path="/details/:bookingId" element={<PrivateRoute><Details /></PrivateRoute>} />
+                {/* <Route path="/my-sessions" element={<PrivateRoute><MySessions /></PrivateRoute>} /> */}
+                {/* <Route path="/details/:bookingId" element={<PrivateRoute><Details /></PrivateRoute>} /> */}
                 {/* <Route path="/edit/:bookingId" element={<PrivateRoute><Edit /></PrivateRoute>} /> */}
 
-                <Route path="/register" element={<Register />} />
+                {/* <Route path="/register" element={<Register />} /> */}
 
-                <Route path="/logout" element={<Logout />} />
+                {/* <Route path="/logout" element={<Logout />} /> */}
 
               </Routes>
 

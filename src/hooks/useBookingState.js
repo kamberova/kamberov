@@ -1,31 +1,31 @@
-import { useState, useEffect, useMemo } from 'react';
+// import { useState, useEffect, useMemo } from 'react';
 
-import * as bookService from '../services/bookService';
+// import * as bookService from '../services/bookService';
 
-const useBookState = (bookingId) => {
-    const [booking, setBooking] = useState({});
+// const useBookState = (bookingId) => {
+//     const [booking, setBooking] = useState({});
 
-    const controller = useMemo(() => {
-        const controller = new AbortController();
+//     const controller = useMemo(() => {
+//         const controller = new AbortController();
 
-        return controller;
-    }, [])
+//         return controller;
+//     }, [])
 
-    useEffect(() => {
-        bookService.getOne(bookingId, controller.signal)
-            .then(bookingResult => {
-                setBooking(bookingResult);
-            })
+//     useEffect(() => {
+//         bookService.getOne(bookingId, controller.signal)
+//             .then(bookingResult => {
+//                 setBooking(bookingResult);
+//             })
 
-        return () => {
-            controller.abort();
-        }
-    }, [bookingId, controller]);
+//         return () => {
+//             controller.abort();
+//         }
+//     }, [bookingId, controller]);
 
-    return [
-        booking,
-        setBooking
-    ]
-};
+//     return [
+//         booking,
+//         setBooking
+//     ]
+// };
 
-export default useBookState;
+// export default useBookState;

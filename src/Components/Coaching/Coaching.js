@@ -1,4 +1,4 @@
-import BookASessionButton from "../Layout/BookASessionButton";
+// import BookASessionButton from "../Layout/BookASessionButton";
 // import { Fragment } from "react";
 import React from 'react';
 
@@ -28,7 +28,7 @@ function Coaching() {
                                 <p className="mt-3">You can book a training upon your needs: personal beginners or advanced training, group training, kids training, or just a sparing partner.</p>
 
 
-                                <BookASessionButton />
+                                {/* <BookASessionButton /> */}
 
                             </div>
 
